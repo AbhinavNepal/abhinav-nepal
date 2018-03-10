@@ -1,0 +1,10 @@
+<ul>
+  <% @disciplines.each do |disc| %>
+    <li><%= disc.title %></li>
+    <ul>
+      <% disc.children.each do |sub_disc| %>
+        <li><%= sub_disc.title %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>

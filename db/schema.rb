@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20180308230302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "discipline_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "discipline_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "discipline_desc_idx"
+  end
+
+  create_table "disciplines", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "code", null: false
+    t.integer "parent_id"
+  end
 
 end
