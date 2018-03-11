@@ -30,4 +30,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    footer:
+      about:
+        link: "About"
+      donate:
+        link: "Donate"
+      terms:
+        link: "Terms"
+      privacy:
+        link: "Privacy"
+      contact:
+        link: "Contact"
