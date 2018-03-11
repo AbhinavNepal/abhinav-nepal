@@ -10,9 +10,12 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  *= require bootstrap
  *= require bootstrap-grid
  *= require bootstrap-reboot
  */
+
+@import "utils/_variables";
+
+@import "modules/disciplines";

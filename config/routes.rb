@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root "disciplines#index"
+  root "scholars#index"
 
-  resources :disciplines, only: [:index]
+  resources :scholars, only: [:index]
 
 end
