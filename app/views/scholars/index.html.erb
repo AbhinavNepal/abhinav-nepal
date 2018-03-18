@@ -1,3 +1,7 @@
+<div class="float-right">
+  <%= link_to fa_icon("user-plus"), new_scholar_path, class: "btn btn-outline-primary btn-sm", title: "Add Scholar" %>
+</div>
+
 <% @scholars.in_groups_of(3).each do |grouped_scholars| %>
   <div class="row">
     <% grouped_scholars.compact.each do |scholar| %>
