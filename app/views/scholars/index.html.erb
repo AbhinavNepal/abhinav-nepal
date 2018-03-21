@@ -1,19 +1,11 @@
-<div class="row mb-3">
-  <div class="col-sm-11">
-    <div id="scholars-search">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text"><%= fa_icon("search") %></span>
-        </div>
-        <input type="text" class="form-control" placeholder="Search scholars by name, discipline or institute" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-1">
-    <div class="float-right">
-      <%= link_to fa_icon("user-plus"), new_scholar_path, class: "btn btn-outline-primary", title: "Add Scholar" %>
-    </div>
-  </div>
+<div>
+  <h4>
+    <%= Scholar.name.pluralize  %>
+    <%= link_to fa_icon("user-plus"), new_scholar_path, class: "btn btn-outline-primary float-right", title: "Add Scholar" %>
+  </h4>
+  <p class="lead">
+    <%= t ".description" %>
+  </p>
 </div>
 
 <% @scholars.in_groups_of(3).each do |grouped_scholars| %>

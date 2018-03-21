@@ -1,11 +1,11 @@
-<div class="card">
+<div class="card mb-2">
   <div class="card-header">
-    <span class="text-muted"><%= fa_icon "user-circle-o", text: "Details" %></span>
+    <%= fa_icon "user-circle-o", text: "Details" %>
   </div>
   <div class="card-body">
     <div class="row">
       <div class="col-md-4">
-        <%= f.input :first_name %>
+        <%= f.input :first_name, autofocus: true %>
       </div>
       <div class="col-md-4">
         <%= f.input :middle_name %>
@@ -19,11 +19,9 @@
   </div>
 </div>
 
-<hr />
-
 <div class="card">
   <div class="card-header">
-    <span class="text-muted"><%= fa_icon "link", text: "Links" %></span>
+    <%= fa_icon "link", text: "Links" %>
   </div>
   <div class="card-body web_urls">
     <% f.object.web_urls.each do |web_url| %>

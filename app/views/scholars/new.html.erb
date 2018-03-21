@@ -1,3 +1,10 @@
+<h4><%= t ".title" %></h4>
+<div class="alert alert-warning">
+  <%= fa_icon("info-circle") %> <%= t ".warning_html" %>
+</div>
+
+<hr />
+
 <%= simple_form_for setup_scholar(@scholar), html: {class: "small"} do |f| %>
   <%= render "form", f: f %>
 <% end %>
