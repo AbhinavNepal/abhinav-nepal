@@ -8,4 +8,6 @@
 #= require popper.min
 #= require bootstrap
 
+#= require cocoon
+
 #= require_tree .

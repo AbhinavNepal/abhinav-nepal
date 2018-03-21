@@ -24,7 +24,11 @@ class ScholarsController < ApplicationController
                                     :middle_name,
                                     :last_name,
                                     :description,
-                                    :discipline_id)
+                                    :discipline_id,
+                                    web_urls_attributes: [:id,
+                                                          :title,
+                                                          :url,
+                                                          :_destroy])
   end
 
 end

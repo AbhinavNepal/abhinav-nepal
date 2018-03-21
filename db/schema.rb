@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311180909) do
+ActiveRecord::Schema.define(version: 20180318190338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20180311180909) do
     t.text "description"
     t.bigint "discipline_id"
     t.index ["discipline_id"], name: "index_scholars_on_discipline_id"
+  end
+
+  create_table "web_urls", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "url", null: false
+    t.string "linkable_type"
+    t.bigint "linkable_id"
+    t.index ["linkable_type", "linkable_id"], name: "index_web_urls_on_linkable_type_and_linkable_id"
   end
 
   add_foreign_key "scholars", "disciplines"

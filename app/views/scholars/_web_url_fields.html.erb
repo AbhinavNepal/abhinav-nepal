@@ -1,0 +1,11 @@
+<div class="web_url">
+  <div class="row">
+    <div class="col-md-4">
+      <%= f.input :title %>
+    </div>
+    <div class="col-md-8">
+      <%= f.input :url %>
+    </div>
+  </div>
+  <%= link_to_remove_association "remove", f, wrapper_class: "web_url" %>
+</div>

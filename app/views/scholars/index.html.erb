@@ -1,5 +1,19 @@
-<div class="float-right">
-  <%= link_to fa_icon("user-plus"), new_scholar_path, class: "btn btn-outline-primary btn-sm", title: "Add Scholar" %>
+<div class="row mb-3">
+  <div class="col-sm-11">
+    <div id="scholars-search">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><%= fa_icon("search") %></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Search scholars by name, discipline or institute" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-1">
+    <div class="float-right">
+      <%= link_to fa_icon("user-plus"), new_scholar_path, class: "btn btn-outline-primary", title: "Add Scholar" %>
+    </div>
+  </div>
 </div>
 
 <% @scholars.in_groups_of(3).each do |grouped_scholars| %>
@@ -14,6 +28,11 @@
             </h5>
             <div class="mb-1 text-muted small"><%= scholar.discipline %></div>
             <p class="card-text mb-auto"><%= scholar.description %></p>
+            <div class="small">
+              <% scholar.web_urls.each do |web_url| %>
+                <%= link_to web_url.title, web_url.url, target: "_blank" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
