@@ -10,4 +10,6 @@
 
 #= require cocoon
 
+#= require select2.min
+
 #= require_tree .

@@ -14,7 +14,21 @@
         <%= f.input :last_name %>
       </div>
     </div>
-    <%= f.association :discipline, collection: Discipline.leaves %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.association :discipline, collection: Discipline.roots,
+                                       as: :grouped_select,
+                                       group_method: :descendants,
+                                       group_label_method: :title %>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group select">
+          <label class="col-form-label select">Institute</label>
+          <select class="world_universities form-control"></select>
+          <%= f.hidden_field :institute_token %>
+        </div>
+      </div>
+    </div>
     <%= f.input :description %>
   </div>
 </div>
@@ -37,7 +51,7 @@
 
 <div class="clearfix mt-3">
   <div class="float-right">
-    <%= f.button :submit, "Save", class: "btn btn-outline-success btn-sm" %>
-    <%= link_to "Cancel", scholars_path, class: "btn btn-outline-danger btn-sm" %>
+    <%= f.button :submit, "Save", class: "btn btn-outline-success" %>
+    <%= link_to "Cancel", scholars_path, class: "btn btn-outline-danger" %>
   </div>
 </div>

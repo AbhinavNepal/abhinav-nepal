@@ -1,0 +1,16 @@
+<div class="card flex-md-row mb-4 box-shadow h-md-250">
+  <div class="card-body d-flex flex-column align-items-start">
+    <strong class="d-inline-block mb-2 <%= scholar.discipline.root.code %>"><%= scholar.discipline.root %></strong>
+    <h5 class="mb-0">
+      <%= scholar.name %>
+    </h5>
+    <div class="mb-1 text-muted small"><%= scholar.discipline %></div>
+    <div class="mb-1 text-muted small"><%= scholar.institute %></div>
+    <p class="card-text mb-auto"><%= scholar.description %></p>
+    <div class="small">
+      <% scholar.web_urls.each do |web_url| %>
+        <%= link_to web_url.title, web_url.url, target: "_blank" %>
+      <% end %>
+    </div>
+  </div>
+</div>

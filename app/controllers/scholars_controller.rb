@@ -1,7 +1,10 @@
 class ScholarsController < ApplicationController
 
   def index
-    @scholars = Scholar.preload(discipline: :self_and_ancestors)
+    @scholars = Scholar.preload(:institute,
+                                :web_urls,
+                                discipline: :self_and_ancestors)
+                       .order(updated_at: :desc)
   end
 
   def new
@@ -25,6 +28,7 @@ class ScholarsController < ApplicationController
                                     :last_name,
                                     :description,
                                     :discipline_id,
+                                    :institute_token,
                                     web_urls_attributes: [:id,
                                                           :title,
                                                           :url,

@@ -5,6 +5,8 @@ class CreateScholars < ActiveRecord::Migration[5.1]
       t.string :middle_name
       t.string :last_name, null: false
       t.text :description
+
+      t.timestamps
     end
     add_reference :scholars, :discipline, foreign_key: {references: :disciplines}
   end
