@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
 
+  ## Deprecated ##
   def world_universities
     # JSON file downloaded from:
     # https://github.com/Hipo/university-domains-list

@@ -7,6 +7,5 @@ Rails.application.routes.draw do
   # pages
   get "about" => "pages#about"
   get "privacy" => "pages#privacy"
-  get "world_universities" => "pages#world_universities"
 
 end

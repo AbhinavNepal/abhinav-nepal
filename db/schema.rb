@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180324221617) do
+ActiveRecord::Schema.define(version: 20180326202959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,11 +29,14 @@ ActiveRecord::Schema.define(version: 20180324221617) do
     t.integer "parent_id"
   end
 
-  create_table "institutes", force: :cascade do |t|
+  create_table "organisations", force: :cascade do |t|
     t.string "name", null: false
-    t.string "country", null: false
+    t.string "position", null: false
+    t.string "country_code", null: false
+    t.bigint "scholar_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["scholar_id"], name: "index_organisations_on_scholar_id"
   end
 
   create_table "scholars", force: :cascade do |t|
@@ -44,9 +47,7 @@ ActiveRecord::Schema.define(version: 20180324221617) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "discipline_id"
-    t.bigint "institute_id"
     t.index ["discipline_id"], name: "index_scholars_on_discipline_id"
-    t.index ["institute_id"], name: "index_scholars_on_institute_id"
   end
 
   create_table "web_urls", force: :cascade do |t|
@@ -57,6 +58,6 @@ ActiveRecord::Schema.define(version: 20180324221617) do
     t.index ["linkable_type", "linkable_id"], name: "index_web_urls_on_linkable_type_and_linkable_id"
   end
 
+  add_foreign_key "organisations", "scholars"
   add_foreign_key "scholars", "disciplines"
-  add_foreign_key "scholars", "institutes"
 end
