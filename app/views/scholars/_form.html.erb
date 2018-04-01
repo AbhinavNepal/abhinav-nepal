@@ -4,13 +4,10 @@
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <%= f.input :first_name, autofocus: true %>
       </div>
-      <div class="col-md-4">
-        <%= f.input :middle_name %>
-      </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <%= f.input :last_name %>
       </div>
     </div>
@@ -18,7 +15,7 @@
                                    as: :grouped_select,
                                    group_method: :descendants,
                                    group_label_method: :title %>
-    <%= f.input :description %>
+    <%= f.input :description, label: "Description / keyword" %>
   </div>
 </div>
 

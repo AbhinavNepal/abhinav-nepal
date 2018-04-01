@@ -167,3 +167,14 @@ SimpleForm.setup do |config|
   # Defines which i18n scope will be used in Simple Form.
   # config.i18n_scope = 'simple_form'
 end
+
+# From http://stackoverflow.com/a/25642294
+SimpleForm::FormBuilder.class_eval do
+  def submit_with_override(value = nil, options = {})
+    value, options = nil, value if value.is_a?(Hash)
+    (options[:data] ||= {}).reverse_merge!(disable_with: I18n.t("button.disable_with"))
+    submit_without_override(value, options)
+  end
+  alias_method :submit_without_override, :submit
+  alias_method :submit, :submit_with_override
+end

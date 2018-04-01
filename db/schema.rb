@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20180326202959) do
 
   create_table "scholars", force: :cascade do |t|
     t.string "first_name", null: false
-    t.string "middle_name"
     t.string "last_name", null: false
     t.text "description"
     t.datetime "created_at", null: false

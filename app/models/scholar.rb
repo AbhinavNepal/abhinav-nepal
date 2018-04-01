@@ -8,10 +8,14 @@ class Scholar < ApplicationRecord
   accepts_nested_attributes_for :organisation, allow_destroy: true
   accepts_nested_attributes_for :web_urls, allow_destroy: true
 
+  ransacker :name do |parent|
+    Arel::Nodes::NamedFunction.new "concat", [parent.table[:first_name], Arel::Nodes.build_quoted(" "), parent.table[:last_name]]
+  end
+
   validates :first_name, :last_name, :discipline, presence: true
 
   def name
-    [first_name, middle_name, last_name].compact.join(" ")
+    [first_name, last_name].reject(&:blank?).map(&:strip).join(" ")
   end
 
 end

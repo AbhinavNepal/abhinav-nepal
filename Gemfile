@@ -45,12 +45,18 @@ gem "simple_form"
 gem "cocoon"
 gem "country_select"
 
+# Object-based searching
+gem "ransack"
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
+  # Debugging tools (pry, awesome print, etc.)
+  gem "pry"
+  gem "pry-rails" # show-routes/show-models/show-middleware, etc
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 end
 
 group :development do

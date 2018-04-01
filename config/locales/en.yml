@@ -2,6 +2,8 @@
 # available at http://guides.rubyonrails.org/i18n.html
 
 en:
+  button:
+    disable_with: "Submitting..."
   layouts:
     footer:
       about:

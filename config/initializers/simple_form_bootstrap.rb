@@ -153,6 +153,20 @@ SimpleForm.setup do |config|
       date: :multi_select,
       time: :multi_select
   }
+
+  config.wrappers :vertical_input_group, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label, class: 'control-label'
+
+    b.wrapper tag: 'div' do |ba|
+      ba.wrapper tag: 'div', class: 'input-group' do |append|
+        append.use :input, class: 'form-control'
+      end
+      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+    end
+  end
 end
 
 # SimpleForm::ActionViewExtensions::FormHelper.class_eval do

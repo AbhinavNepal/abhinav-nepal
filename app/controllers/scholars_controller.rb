@@ -1,9 +1,13 @@
 class ScholarsController < ApplicationController
 
+   skip_before_action :verify_authenticity_token, only: :index
+
   def index
-    @scholars = Scholar.preload(:web_urls,
-                                discipline: :self_and_ancestors)
-                       .order(updated_at: :desc)
+    @q = Scholar.ransack(params[:q])
+    @scholars = @q.result
+                  .preload(:web_urls,
+                           discipline: :self_and_ancestors)
+                  .order(updated_at: :desc)
   end
 
   def new
@@ -23,7 +27,6 @@ class ScholarsController < ApplicationController
 
   def scholar_params
     params.require(:scholar).permit(:first_name,
-                                    :middle_name,
                                     :last_name,
                                     :description,
                                     :discipline_id,

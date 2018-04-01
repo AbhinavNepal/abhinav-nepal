@@ -1,0 +1,16 @@
+<%= search_form_for q, url: search_scholars_path, method: :post, remote: true, builder: SimpleForm::FormBuilder do |f| %>
+  <div class="row">
+    <div class="col-md-9 pr-0">
+      <%= f.input :name, wrapper: :vertical_input_group, label: false do %>
+        <div class="input-group-prepend">
+          <span class="input-group-text"><%= fa_icon("search") %></span>
+        </div>
+        <%= f.input_field :name_or_description_cont, label: false, placeholder: "Search by name or keywords...", class: "form-control" %>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <%= f.input :discipline_id_or_discipline_parent_id_eq, collection: search_discipline_options,
+                                                             label: false %>
+    </div>
+  </div>
+<% end %>
