@@ -7,4 +7,11 @@
       .select2-selection__rendered { line-height: 38px; }
     }
   }
+
+  .scholar-search-info {
+    a:hover {
+      text-decoration: none;
+      color: #0056b3 !important;
+    }
+  }
 }

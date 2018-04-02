@@ -18,3 +18,11 @@ p, .alert {
     &:hover { color: #171b1f }
   }
 }
+
+.typeahead.dropdown-menu {
+  width: 90%;
+  .active .dropdown-item {
+    background: #ededed;
+    &:active { color: inherit !important; }
+  }
+}

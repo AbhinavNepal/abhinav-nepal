@@ -40,3 +40,22 @@ $(document).on "ready page:load remote:load turbolinks:load", ->
 
     $(form).find("select[name*='q[discipline_id_or_discipline_parent_id_eq]']").on "change", ->
       Rails.fire(form, 'submit')
+
+  $("input[name*='scholar[first_name]").typeahead
+    minLength: 3
+    items: 10
+    source: scholars.ttAdapter()
+    autoSelect: false
+    highlighter: Object
+    subheader: "Existing scholars:"
+    displayText: (data) ->
+      return unless data
+      return unless data.first_name
+      "#{data.first_name} <small class='text-muted'> #{data.discipline}</small>"
+    updater: (data) ->
+      return unless data
+      $("input#suggested_id").val(data.id)
+      data.first_name # return
+    afterSelect: (data) ->
+      id = $("input#suggested_id").val()
+      window.location.href = Routes.scholars_path({sid: id})

@@ -75,6 +75,7 @@
     this.value = this.$element.val() || this.$element.text();
     this.keyPressed = false;
     this.focused = this.$element.is( ":focus" );
+    this.subheader = this.options.subheader || "";
   };
 
   Typeahead.prototype = {
@@ -367,7 +368,12 @@
         items.filter(':not(.dropdown-header)').first().addClass('active');
         this.$element.data('active', items.first().data('value'));
       }
-      this.$menu.html(items);
+      if (this.subheader.length > 0) {
+        this.$menu.html("<li class='text-muted small pl-2'>" + this.subheader + "</li>")
+        this.$menu.append(items);
+      } else {
+        this.$menu.html(items);
+      }
       return this;
     },
 
