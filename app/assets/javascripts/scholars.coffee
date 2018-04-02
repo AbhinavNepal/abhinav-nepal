@@ -1,3 +1,10 @@
+scholars = new Bloodhound(
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace("first_name")
+  queryTokenizer: Bloodhound.tokenizers.whitespace
+  prefetch: {url: Routes.scholars_path({format: "json"})})
+scholars.clearPrefetchCache(); # debugging
+scholars.initialize()
+
 $(document).on "ready page:load remote:load turbolinks:load", ->
 
   $(".publication_web_urls, .personal_web_urls").each ->

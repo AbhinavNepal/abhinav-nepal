@@ -5,8 +5,13 @@
 #= require rails-ujs
 #= require turbolinks
 
+#= require js-routes
+
 #= require popper.min
 #= require bootstrap
+
+#= require bloodhound
+#= require bootstrap3-typeahead
 
 #= require cocoon
 

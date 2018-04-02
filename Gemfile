@@ -51,6 +51,12 @@ gem "ransack"
 # Enumerated attributes
 gem "enumerize"
 
+# rails named routes as javascript helpers
+gem "js-routes"
+
+# general ruby templating
+gem "rabl"
+
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'

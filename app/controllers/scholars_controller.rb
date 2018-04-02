@@ -5,7 +5,8 @@ class ScholarsController < ApplicationController
   def index
     @q = Scholar.ransack(params[:q])
     @scholars = @q.result
-                  .preload(:web_urls,
+                  .preload(:organisation,
+                           :web_urls,
                            discipline: :self_and_ancestors)
                   .order(updated_at: :desc)
   end
