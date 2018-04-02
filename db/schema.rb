@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20180326202959) do
   create_table "web_urls", force: :cascade do |t|
     t.string "title", null: false
     t.string "url", null: false
+    t.string "code", null: false
     t.string "linkable_type"
     t.bigint "linkable_id"
     t.index ["linkable_type", "linkable_id"], name: "index_web_urls_on_linkable_type_and_linkable_id"

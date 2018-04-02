@@ -4,17 +4,19 @@
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <%= f.input :first_name, autofocus: true %>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <%= f.input :last_name %>
       </div>
+      <div class="col-md-4">
+        <%= f.association :discipline, collection: Discipline.roots,
+                                       as: :grouped_select,
+                                       group_method: :descendants,
+                                       group_label_method: :title %>
+      </div>
     </div>
-    <%= f.association :discipline, collection: Discipline.roots,
-                                   as: :grouped_select,
-                                   group_method: :descendants,
-                                   group_label_method: :title %>
     <%= f.input :description, label: "Description / keyword" %>
   </div>
 </div>
@@ -30,7 +32,7 @@
           <%= of.input :name %>
         </div>
         <div class="col-md-4">
-          <%= of.input :position %>
+          <%= of.input :position, collection: Organisation::POSITION %>
         </div>
         <div class="col-md-4">
           <%= of.input :country_code, include_blank: true %>
@@ -40,18 +42,37 @@
   </div>
 </div>
 
-<div class="card">
+<div class="card mb-2">
   <div class="card-header">
-    <%= fa_icon "link", text: "Links" %>
+    <%= fa_icon "link", text: "Publication links" %>
+    <abbr class="pull-right text-muted" data-toggle="tooltip" data-placement="top" title="At least one source needs to be supplied">
+      <%= fa_icon "info-circle" %>
+    </abbr>
   </div>
-  <div class="card-body web_urls">
-    <% f.object.web_urls.each do |web_url| %>
+  <div class="card-body publication_web_urls">
+    <% f.object.web_urls.select(&:publication?).each do |web_url| %>
       <%= f.simple_fields_for :web_urls, web_url do |wuf| %>
         <%= render "web_url_fields", f: wuf %>
       <% end %>
     <% end %>
     <div class="clearfix">
-      <%= link_to_add_association "Add more", f, :web_urls, class: "float-right" %>
+      <%= link_to_add_association "Add more", f, :web_urls, class: "float-right", wrap_object: Proc.new { f.object.web_urls.select(&:publication?) } %>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <%= fa_icon "link", text: "Personal links" %>
+  </div>
+  <div class="card-body personal_web_urls">
+    <% f.object.web_urls.select(&:personal?).each do |web_url| %>
+      <%= f.simple_fields_for :web_urls, web_url do |wuf| %>
+        <%= render "web_url_fields", f: wuf %>
+      <% end %>
+    <% end %>
+    <div class="clearfix">
+      <%= link_to_add_association "Add more", f, :web_urls, class: "float-right", wrap_object: Proc.new { f.object.web_urls.select(&:personal?) } %>
     </div>
   </div>
 </div>

@@ -1,11 +1,16 @@
 <div class="web_url">
   <div class="row">
     <div class="col-md-4">
-      <%= f.input :title %>
+      <% if f.object.publication? %>
+        <%= f.input :title, collection: WebUrl::PUBLICATION_SOURCES, include_blank: false %>
+      <% else %>
+        <%= f.input :title, collection: WebUrl::PERSONAL_SOURCES, required: false %>
+      <% end %>
     </div>
     <div class="col-md-8">
-      <%= f.input :url %>
+      <%= f.input :url, required: f.object.publication? %>
     </div>
+    <%= f.hidden_field :code %>
   </div>
   <%= link_to_remove_association "remove", f, wrapper_class: "web_url" %>
 </div>

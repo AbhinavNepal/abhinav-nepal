@@ -37,6 +37,7 @@ class ScholarsController < ApplicationController
                                     web_urls_attributes: [:id,
                                                           :title,
                                                           :url,
+                                                          :code,
                                                           :_destroy])
   end
 

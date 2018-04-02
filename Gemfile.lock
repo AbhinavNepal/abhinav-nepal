@@ -75,6 +75,8 @@ GEM
       countries (~> 2.0)
       sort_alphabetical (~> 1.0)
     crass (1.0.3)
+    enumerize (2.1.2)
+      activesupport (>= 3.2)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
@@ -225,6 +227,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   country_select
+  enumerize
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails

@@ -48,6 +48,9 @@ gem "country_select"
 # Object-based searching
 gem "ransack"
 
+# Enumerated attributes
+gem "enumerize"
+
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
