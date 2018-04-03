@@ -1,0 +1,36 @@
+discipline,discipline_code,sub_discipline,sub_discipline_code
+"Biology and Medicine",biology_medicine,Pediatrics,pediatrics
+"Biology and Medicine",biology_medicine,"Molecular Biology and Genetics",molecular_biology_genetics
+"Biology and Medicine",biology_medicine,"Microbiology and related Biotechnology",microbiology_biotechnology
+"Biology and Medicine",biology_medicine,"Infectious Disease and Immunology",infectious_disease_immunology
+"Biology and Medicine",biology_medicine,"Clinical Medicine",clinical_medicine
+"Biology and Medicine",biology_medicine,"Cardiothoracic Surgery",cardiothoracic_surgery
+"Biology and Medicine",biology_medicine,Biochemistry,biochemistry
+"Biology and Medicine",biology_medicine,Neuroscience,neuroscience
+Chemistry,chemistry,Polymers,polymers
+Chemistry,chemistry,"Analytic Chemistry",analytic_chemistry
+Chemistry,chemistry,"Organic Chemistry",organic_chemistry
+"Environmental and Energy Science",environmental_energy_science,"Biodiversity, Ecosystem, Flora and Fauna",biodiversity_ecosystem_flora_fauna
+"Environmental and Energy Science",environmental_energy_science,"Biofuel and Bioenergy",biofuel_bioenergy
+"Environmental and Energy Science",environmental_energy_science,"Atmospheric Science",atmospheric_science
+"Informatics, Computational Science and Engineering",informatics_computation,"Bioinformatics and Genomics",bioinformatics_genomics
+"Informatics, Computational Science and Engineering",informatics_computation,"Climate change, Geomechanics, Seismology, Hydroinformatics",climate_geomechanics_seismology_hydroinformatics
+"Informatics, Computational Science and Engineering",informatics_computation,"Communication, Network Theory and Applications",communication_network
+"Informatics, Computational Science and Engineering",informatics_computation,"Computer Vision and Robotics",computer_vision_robotics
+"Informatics, Computational Science and Engineering",informatics_computation,"Electronics and Related Computing",electronics_computing
+"Informatics, Computational Science and Engineering",informatics_computation,"Machine Learning and Artificial Intelligence, Natural Language Processing",machine_learning_ai_natural_lang
+"Informatics, Computational Science and Engineering",informatics_computation,"Biomedical Engineering, Medical Imaging Informatics and Physics",biomedical_medical_imaging_physics
+"Informatics, Computational Science and Engineering",informatics_computation,"Cyber Security",cyber_security
+"Maths and Physics",maths_physics,"Applied Mathematics Biology and Biophysics",applied_maths_biology_biophysics
+"Maths and Physics",maths_physics,"Applied Mathematics Computational Neuroscience",applied_maths_computational_neuroscience
+"Maths and Physics",maths_physics,"Applied Mathematics Geophysics",applied_maths_geophysics
+"Maths and Physics",maths_physics,"Applied Mathematics Numerical Methods",applied_maths_numerical
+"Maths and Physics",maths_physics,"Theoretical Mathematics",theoretical_maths
+"Maths and Physics",maths_physics,"Theoretical Physics",theoretical_physics
+"Maths and Physics",maths_physics,"Physics Computing, Modeling and Simulation",physics_computing_modeling_simulation
+"Mechanical, Civil and Aerospace Engineering",mechanical_civil_aerospace,"Structural Engineering",structural_engineering
+"Public Health",public_health,"Antibiotic Resistance",antibiotic_resistance
+"Public Health",public_health,"Environmental Health Science",environmental_health_science
+"Public Health",public_health,Epidemiology,epidemiology
+"Public Health",public_health,"Health policy modeling",health_policy_modeling
+Education,education,Mathematics,mathematics

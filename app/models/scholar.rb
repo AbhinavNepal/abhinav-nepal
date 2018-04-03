@@ -15,7 +15,7 @@ class Scholar < ApplicationRecord
   validates :first_name, :last_name, :discipline, presence: true
 
   def name
-    [first_name, last_name].reject(&:blank?).map(&:strip).join(" ")
+    [first_name, last_name].reject(&:blank?).map(&:strip).join(" ").titleize
   end
 
   private
