@@ -11,10 +11,13 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
+
  *= require bootstrap
  *= require bootstrap-grid
  *= require bootstrap-reboot
+
  *= require select2.min
+ *= require select2-bootstrap
  */
 
 @import "font-awesome";
