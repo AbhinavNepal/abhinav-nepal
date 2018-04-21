@@ -1,0 +1,21 @@
+<div class="row mt-5">
+  <div class="col-lg-4 offset-lg-4">
+    <h2 class="page-header text-center mb-4">
+      <%= link_to image_tag("an_logo.svg", height: "48"), root_path, class: "mr-4" %>
+    </h2>
+    <div class="card p-2 bg-light">
+      <div class="card-body">
+        <%= render partial: "layouts/flash" %>
+        <%= simple_form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "small" } do |f| %>
+          <%= f.input :email, label: false, placeholder: "Email", autofocus: true %>
+          <%= f.input :password, placeholder: "Password", label: false %>
+          <%= f.submit "Log in", class: "btn btn-dark btn-block" %>
+        <% end %>
+        <hr />
+        <div class="small">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

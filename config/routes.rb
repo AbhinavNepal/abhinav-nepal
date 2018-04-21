@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root "scholars#index"
 
   resources :scholars, only: [:index, :new, :create] do
