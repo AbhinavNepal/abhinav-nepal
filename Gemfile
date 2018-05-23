@@ -60,6 +60,8 @@ gem "rabl"
 # flexible authentication solution based on warden
 # authentication
 gem "devise"
+# role management library
+gem "rolify"
 
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver
