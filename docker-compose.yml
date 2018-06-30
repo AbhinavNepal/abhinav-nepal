@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+  db:
+    image: postgres:9.6-alpine
+    volumes:
+      - db-data:/var/lib/postgresql/db-data
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+  app:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+volumes:
+  db-data:

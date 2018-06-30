@@ -10,6 +10,12 @@ threads threads_count, threads_count
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
 port        ENV.fetch("PORT") { 3000 }
+# By default, puma was putting the pidfile in the rails app `tmp` directory.
+# This was leading to the pid file existing when creating a new container, thus
+# making puma fail to start saying that there was already a server running.
+# Since we're running in containers we've set the pid file to be in the `/tmp`
+# directory that will start clean with every container run.
+pidfile "/tmp/puma.pid"
 
 # Specifies the `environment` that Puma will run in.
 #

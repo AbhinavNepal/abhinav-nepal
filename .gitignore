@@ -4,6 +4,12 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# specific to each app instance
+/config/database.yml
+
+# avoid secrets in source control
+/config/secrets.yml
+
 # Ignore bundler config.
 /.bundle
 
