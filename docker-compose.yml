@@ -1,5 +1,9 @@
 version: "2"
 
+volumes:
+  db-data:
+    external: false
+
 services:
   db:
     image: postgres:9.6-alpine
@@ -19,6 +23,3 @@ services:
       - db
     env_file:
       - .env
-
-volumes:
-  db-data:
