@@ -6,18 +6,14 @@ RUN apt-get update -yqq \
   && apt-get -q clean \
   && rm -rf /var/lib/apt/lists
 
-# install path setup
-ENV INSTALL_PATH /abhinav-nepal
-RUN mkdir -p $INSTALL_PATH
-
 # install gems
+WORKDIR /usr/src/app
 COPY Gemfile* ./
 RUN bundle install
 COPY . .
 
 # set rails to run in production
 ENV RAILS_ENV production
-
 # precompile Rails assets. We set a dummy secret key
 RUN rails SECRET_KEY_BASE=pickasecuretoken assets:precompile
 

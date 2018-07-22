@@ -3,22 +3,21 @@ version: "2"
 volumes:
   assets:
     external: false
-  configs:
-    external: false
   db-data:
     external: false
 
 services:
-  webserver:
-    image: "nginx:1.11.8"
-    env_file:
-      - .env.prod
+  https-portal:
+    build: ./https-portal/
     ports:
-      - "80:80"
-      - "443:433"
+      - '80:80'
+      - '443:443'
+    restart: always
+    environment:
+      DOMAINS: 'www.abhinavnepal.com -> http://dockerhost:3000, abhinavnepal.com => www.abhinavnepal.com'
+      STAGE: 'production'
     volumes:
       - assets:/usr/share/nginx/html
-      - configs:/etc/nginx/conf.d
   prod_db:
     image: postgres:9.6-alpine
     env_file:
@@ -35,9 +34,8 @@ services:
       - .env.prod
     ports:
       - "3000:3000"
-    volumes:
-      - assets:/usr/share/nginx/html
-      - configs:/etc/nginx/conf.d
     depends_on:
       - prod_db
-      - webserver
+      - https-portal
+    volumes:
+      - assets:/usr/share/nginx/html
