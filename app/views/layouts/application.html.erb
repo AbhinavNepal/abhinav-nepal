@@ -5,6 +5,10 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# Google analytics - only monitor production site %>
+    <% if Rails.application.stage.prod? %>
+      <%= render "layouts/ga_prod" %>
+    <% end %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
