@@ -3,7 +3,8 @@ class Organisation < ApplicationRecord
   # constant as most likely a fixed set of list.
   POSITION = ["PhD Candidate", "Research Assistant", "Postdoctoral Researcher",
               "Assistant Professor", "Associate Professor", "Reader", "Professor", "Lecturer",
-              "Industry Research Scientist", "Industry Research Engineer"].freeze
+              "Industry Research Scientist", "Industry Research Engineer",
+              "Clinical Researcher"].freeze
 
   belongs_to :scholar
 
