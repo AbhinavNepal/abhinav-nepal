@@ -41,7 +41,7 @@ $(document).on "ready page:load remote:load turbolinks:load", ->
     $(form).find("select[name*='q[discipline_id_or_discipline_parent_id_eq]']").on "change", ->
       Rails.fire(form, 'submit')
 
-  $("input[name*='scholar[first_name]").typeahead
+  $("input[name*='scholar[first_name]']").typeahead
     minLength: 3
     items: 10
     source: scholars.ttAdapter()
