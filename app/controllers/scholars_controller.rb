@@ -11,11 +11,7 @@ class ScholarsController < ApplicationController
     set_searching
 
     @q = Scholar.ransack(params[:q])
-    @scholars = @q.result
-                  .preload(:organisation,
-                           :web_urls,
-                           discipline: :self_and_ancestors)
-                  .order(updated_at: :desc)
+    load_scholars
   end
 
   def new
@@ -38,19 +34,20 @@ class ScholarsController < ApplicationController
                                     :last_name,
                                     :description,
                                     :discipline_id,
-                                    organisation_attributes: [:id,
-                                                              :name,
-                                                              :position,
-                                                              :country_code],
-                                    web_urls_attributes: [:id,
-                                                          :title,
-                                                          :url,
-                                                          :code,
-                                                          :_destroy])
+                                    organisation_attributes: [:id, :name, :position, :country_code],
+                                    web_urls_attributes: [:id, :title, :url, :code, :_destroy])
   end
 
   def set_searching
     @searching = (params[:q] || {}).values.any?(&:present?)
+  end
+
+  def load_scholars
+    @scholars = @q.result
+                  .preload(:organisation,
+                           :web_urls,
+                           discipline: :self_and_ancestors)
+                  .order(updated_at: :desc)
   end
 
 end
