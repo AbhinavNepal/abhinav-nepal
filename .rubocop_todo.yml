@@ -41,7 +41,8 @@ Layout/EmptyLines:
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: empty_lines, no_empty_lines
 Layout/EmptyLinesAroundBlockBody:
-  Enabled: true
+  Exclude:
+    - db/schema.rb
 
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
@@ -87,13 +88,11 @@ Layout/SpaceBeforeFirstArg:
   Exclude:
     - 'config/puma.rb'
 
-# Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: require_no_space, require_space
 Layout/SpaceInLambdaLiteral:
-  Exclude:
-    - 'app/models/list_item.rb'
+  Enabled: false
 
 # Offense count: 6
 # Cop supports --auto-correct.
@@ -180,6 +179,8 @@ Style/MixinUsage:
 # Configuration parameters: Strict.
 Style/NumericLiterals:
   MinDigits: 15
+  Exclude:
+    - db/schema.rb
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -207,12 +208,12 @@ Style/StringLiterals:
 Style/SymbolArray:
   EnforcedStyle: brackets
 
-# Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, MinSize, WordRegex.
 # SupportedStyles: percent, brackets
 Style/WordArray:
   Exclude:
+    - db/migrate/**/*.rb
     - db/schema.rb
 
 # Offense count: 107

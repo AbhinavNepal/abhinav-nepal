@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-md-4">
       <% if f.object.publication? %>
-        <%= f.input :title, collection: WebUrl::PUBLICATION_SOURCES, include_blank: false %>
+        <%= f.input :title, collection: ListItem.in_list(:publication_sources), value_method: :label, include_blank: false %>
       <% else %>
-        <%= f.input :title, collection: WebUrl::PERSONAL_SOURCES, required: false %>
+        <%= f.input :title, collection: ListItem.in_list(:personal_sources), value_method: :label, required: false %>
       <% end %>
     </div>
     <div class="col-md-8">

@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180523205036) do
+ActiveRecord::Schema.define(version: 2018_07_28_113803) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +27,17 @@ ActiveRecord::Schema.define(version: 20180523205036) do
     t.string "title", null: false
     t.string "code", null: false
     t.integer "parent_id"
+  end
+
+  create_table "list_items", force: :cascade do |t|
+    t.string "label", null: false
+    t.integer "position", null: false
+    t.bigint "list_id"
+    t.index ["list_id"], name: "index_list_items_on_list_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "code", null: false
   end
 
   create_table "organisations", force: :cascade do |t|
@@ -98,6 +110,7 @@ ActiveRecord::Schema.define(version: 20180523205036) do
     t.index ["linkable_type", "linkable_id"], name: "index_web_urls_on_linkable_type_and_linkable_id"
   end
 
+  add_foreign_key "list_items", "lists"
   add_foreign_key "organisations", "scholars"
   add_foreign_key "scholars", "disciplines"
 end
