@@ -78,6 +78,11 @@ group :development, :test do
 
   # code analyzer and formatter
   gem 'rubocop', require: false
+  # behaviour-driven development
+  gem "rspec-rails"
+
+  # Generate sample test data
+  gem "faker"
 end
 
 group :development do
@@ -87,6 +92,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  # fixtures replacement
+  gem 'factory_bot_rails'
+  # One-liners that test common Rails functionality
+  gem "shoulda-matchers"
+  # Strategies for cleaning databases. Used to ensure a clean state for testing.
+  gem "database_cleaner"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
