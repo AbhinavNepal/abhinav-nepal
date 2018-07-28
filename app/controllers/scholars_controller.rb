@@ -5,8 +5,8 @@ class ScholarsController < ApplicationController
   def index
     if params[:sid]
       @scholar = Scholar.find(params[:sid])
-      params[:q]= {name_or_description_cont: @scholar.name,
-                   discipline_id_or_discipline_parent_id_eq: @scholar.discipline_id}
+      params[:q] = {name_or_description_cont: @scholar.name,
+                    discipline_id_or_discipline_parent_id_eq: @scholar.discipline_id}
     end
     set_searching
 

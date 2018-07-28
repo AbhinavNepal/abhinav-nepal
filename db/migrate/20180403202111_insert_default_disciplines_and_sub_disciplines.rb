@@ -1,6 +1,7 @@
 require "csv"
 
 class InsertDefaultDisciplinesAndSubDisciplines < ActiveRecord::Migration[5.1]
+
   def change
     CSV.foreach(Rails.root + "db/migrate/#{version}_default_disciplines_and_sub_disciplines.csv", headers: true) do |csv|
       row = csv.to_hash
@@ -15,4 +16,5 @@ class InsertDefaultDisciplinesAndSubDisciplines < ActiveRecord::Migration[5.1]
       end
     end
   end
+
 end

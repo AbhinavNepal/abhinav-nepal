@@ -15,7 +15,6 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     b.use :label, class: 'col-form-label' do
-
     end
     b.use :input, class: 'form-control'
     b.use :error, wrap_with: {tag: 'span', class: 'invalid-feedback'}
@@ -142,16 +141,15 @@ SimpleForm.setup do |config|
     end
   end
 
-
   config.default_wrapper = :vertical_form
   config.wrapper_mappings = {
-      check_boxes: :vertical_radio_and_checkboxes,
-      radio_buttons: :vertical_radio_and_checkboxes,
-      file: :vertical_file_input,
-      boolean: :vertical_boolean,
-      datetime: :multi_select,
-      date: :multi_select,
-      time: :multi_select
+    check_boxes: :vertical_radio_and_checkboxes,
+    radio_buttons: :vertical_radio_and_checkboxes,
+    file: :vertical_file_input,
+    boolean: :vertical_boolean,
+    datetime: :multi_select,
+    date: :multi_select,
+    time: :multi_select
   }
 
   config.wrappers :vertical_input_group, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
@@ -163,8 +161,8 @@ SimpleForm.setup do |config|
       ba.wrapper tag: 'div', class: 'input-group' do |append|
         append.use :input, class: 'form-control'
       end
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+      ba.use :error, wrap_with: {tag: 'span', class: 'help-block'}
+      ba.use :hint,  wrap_with: {tag: 'p', class: 'help-block'}
     end
   end
 end
@@ -206,14 +204,14 @@ SimpleForm::Inputs::Base.class_eval do
     if wrapper_options
       wrapper_options.merge(options) do |key, oldval, newval|
         case key.to_s
-          when 'class'
-            classes = Array(oldval) + Array(newval)
-            classes << 'is-invalid' if has_errors?
-            classes
-          when 'data', 'aria'
-            oldval.merge(newval)
-          else
-            newval
+        when 'class'
+          classes = Array(oldval) + Array(newval)
+          classes << 'is-invalid' if has_errors?
+          classes
+        when 'data', 'aria'
+          oldval.merge(newval)
+        else
+          newval
         end
       end
     else

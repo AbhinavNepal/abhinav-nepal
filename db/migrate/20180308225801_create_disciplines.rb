@@ -1,4 +1,5 @@
 class CreateDisciplines < ActiveRecord::Migration[5.1]
+
   def change
     create_table :disciplines do |t|
       t.string :title, null: false
@@ -6,4 +7,5 @@ class CreateDisciplines < ActiveRecord::Migration[5.1]
       t.integer :parent_id
     end
   end
+
 end

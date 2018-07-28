@@ -75,6 +75,9 @@ group :development, :test do
   gem "pry"
   gem "pry-rails" # show-routes/show-models/show-middleware, etc
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+
+  # code analyzer and formatter
+  gem 'rubocop', require: false
 end
 
 group :development do

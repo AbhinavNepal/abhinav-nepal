@@ -1,4 +1,5 @@
 class CreateScholars < ActiveRecord::Migration[5.1]
+
   def change
     create_table :scholars do |t|
       t.string :first_name, null: false
@@ -9,4 +10,5 @@ class CreateScholars < ActiveRecord::Migration[5.1]
     end
     add_reference :scholars, :discipline, foreign_key: {references: :disciplines}
   end
+
 end
