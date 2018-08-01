@@ -29,6 +29,7 @@ gem "pg"
 # Enumerated attributes
 gem "enumerize"
 
+# make ActiveRecord models support hierarchies
 gem "closure_tree"
 
 ## Assets ##
