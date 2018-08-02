@@ -1,5 +1,9 @@
 FactoryBot.define do
-  factory :team, class: List do
-    code { Faker::Football.team.parameterize.underscore }
+  factory :org_positions_list, class: List do
+    code { "org_positions" }
+  end
+
+  factory :publication_sources_list, class: List do
+    code { "publication_sources" }
   end
 end

@@ -68,10 +68,6 @@ gem "devise"
 gem "rolify"
 
 group :development, :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
-
   # Debugging tools (pry, awesome print, etc.)
   gem "pry"
   gem "pry-rails" # show-routes/show-models/show-middleware, etc
@@ -102,6 +98,12 @@ group :test do
   gem "shoulda-matchers"
   # Strategies for cleaning databases. Used to ensure a clean state for testing.
   gem "database_cleaner"
+  # Acceptance test framework for Web applications
+  gem "capybara"
+  # Capybara driver that runs tests on a headless WebKit browser, provided by PhantomJS
+  gem "poltergeist", require: false
+  # Helper that opens page automatically when testing with capybara
+  gem "launchy"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
