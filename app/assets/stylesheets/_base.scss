@@ -36,3 +36,9 @@ p, .alert { font-size: 14px; }
     &:active { color: inherit !important; }
   }
 }
+
+.container-sm {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}

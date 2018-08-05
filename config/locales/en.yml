@@ -2,6 +2,10 @@
 # available at http://guides.rubyonrails.org/i18n.html
 
 en:
+  app:
+    name: "AbhinavNepal"
+    description: "Useful resources that can help anyone interested in doing science and innovation related works in or for Nepal."
+
   button:
     disable_with: "Submitting..."
   layouts:
@@ -10,8 +14,6 @@ en:
         link: "About"
       donate:
         link: "Donate"
-      terms:
-        link: "Terms"
       privacy:
         link: "Privacy"
       contact:

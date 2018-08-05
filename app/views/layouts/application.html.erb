@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AbhinavNepal</title>
+    <title><%= t("app.name") %></title>
     <%= csrf_meta_tags %>
+    <meta name="description" content="<%= t('app.description') %>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= favicon_link_tag "favicon.ico" %>
     <%= favicon_link_tag "favicon32.png", rel: "icon", type: "image/png" %>
