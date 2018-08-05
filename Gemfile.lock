@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/ClosureTree/closure_tree.git
+  revision: 5d44d22023b8c1537cbe559354c6be3694a07102
+  branch: master
+  specs:
+    closure_tree (6.6.0)
+      activerecord (>= 4.1.0)
+      with_advisory_lock (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -60,9 +69,6 @@ GEM
       rack-test (>= 0.5.4)
       xpath (>= 2.0, < 4.0)
     cliver (0.3.2)
-    closure_tree (6.6.0)
-      activerecord (>= 4.1.0)
-      with_advisory_lock (>= 3.0.0)
     cocoon (1.2.11)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -300,7 +306,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   capybara
-  closure_tree
+  closure_tree!
   cocoon
   coffee-rails (~> 4.2)
   country_select

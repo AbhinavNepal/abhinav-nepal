@@ -20,17 +20,16 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 ## ActiveRecord ##
 # postgres db
 gem "pg"
 # Enumerated attributes
 gem "enumerize"
-
 # make ActiveRecord models support hierarchies
-gem "closure_tree"
+# `master` as https://github.com/ClosureTree/closure_tree/issues/318
+gem "closure_tree", github: 'ClosureTree/closure_tree', branch: "master"
+# Object-based searching
+gem "ransack"
 
 ## Assets ##
 # Use SCSS for stylesheets
@@ -54,9 +53,6 @@ gem "js-routes"
 gem "simple_form"
 gem "cocoon"
 gem "country_select"
-
-# Object-based searching
-gem "ransack"
 
 # general ruby templating
 gem "rabl"
