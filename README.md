@@ -1,24 +1,19 @@
-# README
+# AbhinavNepal
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/AbhinavNepal/abhinav-nepal/blob/master/LICENSE)
 
-Things you may want to cover:
+[AbhinavNepal](https://abhinavnepal.com) is an open source, Ruby on Rails platform that provides useful resources to help anyone interested in doing science and innovation related works in or for Nepal.
 
-* Ruby version
+### Setup
 
-* System dependencies
+Please read the [SETUP.md](https://github.com/AbhinavNepal/abhinav-nepal/blob/master/SETUP.md) file for instructions.
 
-* Configuration
+### Contributing
 
-* Database creation
+We encourage any contributions to make AbhinavNepal better. For bug fixes, please fork this repo and send us a pull request.
 
-* Database initialization
+If you'd like to add a cool new feature, please [create an issue](https://github.com/AbhinavNepal/abhinav-nepal/issues/new) to discuss about what you want to do.
 
-* How to run the test suite
+### License
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+AbhinavNepal is licensed under the [MIT License](https://github.com/AbhinavNepal/abhinav-nepal/blob/master/LICENSE).
