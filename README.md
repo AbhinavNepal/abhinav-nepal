@@ -1,6 +1,7 @@
 # AbhinavNepal
 
 [![Build Status](https://travis-ci.com/AbhinavNepal/abhinav-nepal.svg?branch=master)](https://travis-ci.com/AbhinavNepal/abhinav-nepal)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f1ee4474279eb55d6964/maintainability)](https://codeclimate.com/github/AbhinavNepal/abhinav-nepal/maintainability)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/AbhinavNepal/abhinav-nepal/blob/master/LICENSE)
 
 [AbhinavNepal](https://abhinavnepal.com) is an open source, Ruby on Rails platform that provides useful resources to help anyone interested in doing science and innovation related works in or for Nepal.
