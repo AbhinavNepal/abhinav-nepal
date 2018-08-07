@@ -1,0 +1,23 @@
+sudo: false
+language: ruby
+addons:
+  postgresql: "9.6"
+env:
+  - DB=postgresql STAGE=test
+services:
+  - postgresql
+branches:
+  only:
+    - master
+bundler_args: --without="production development local"
+cache: bundler
+before_install:
+  - gem install bundler
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database abhinav_test' -U postgres
+  - bin/rake secret | xargs echo -e 'test:\n  secret_key_base:' > config/secrets.yml
+script:
+  - bundle exec rubocop
+  - RAILS_ENV=test bin/rake db:test:prepare --trace
+  - bundle exec rspec

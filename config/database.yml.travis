@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: abhinav_test
+  username: postgres
