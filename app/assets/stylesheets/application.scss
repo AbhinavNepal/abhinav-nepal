@@ -24,9 +24,11 @@
 
 @import "_base";
 
-@import "screens/phones";
-
 @import "utils/_variables";
+
+@import "components/_forms";
 
 @import "modules/disciplines";
 @import "modules/scholars";
+
+@import "screens/phones";

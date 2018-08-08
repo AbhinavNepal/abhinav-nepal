@@ -11,7 +11,7 @@
   <div class="row">
     <% grouped_scholars.compact.each do |scholar| %>
       <div class="col-md-4">
-        <%= render "scholar", scholar: scholar %>
+        <%= render scholar %>
       </div>
     <% end %>
   </div>

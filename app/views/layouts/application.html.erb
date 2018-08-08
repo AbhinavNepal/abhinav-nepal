@@ -21,7 +21,6 @@
   <body class="<%= controller_name %>">
     <%= render "navigations/navbar" %>
     <div class="container">
-      <%= render partial: "layouts/flash" unless controller_name == "sessions" %>
       <%= yield %>
     </div>
     <%= render "layouts/footer" %>

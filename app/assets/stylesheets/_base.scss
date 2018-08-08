@@ -1,5 +1,5 @@
 .navbar {
-  padding: 0.3rem 1rem !important;
+  padding: 8px 10px !important;
 
   .navbar-nav .active > a.nav-link { color: #ededed !important; }
   a.nav-link {
@@ -38,7 +38,9 @@ p, .alert { font-size: 14px; }
 }
 
 .container-sm {
-  max-width: 640px;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
+
+.select2 { width: 100%!important; }
