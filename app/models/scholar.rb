@@ -18,6 +18,12 @@ class Scholar < ApplicationRecord
     [first_name, last_name].reject(&:blank?).map(&:strip).join(" ")
   end
 
+  %i[publication personal].each do |code|
+    define_method("build_#{code}_urls") do
+      web_urls.build(code: code) if web_urls.none?(&:"#{code}?")
+    end
+  end
+
   private
 
   def reject_web_urls?(attributes)
