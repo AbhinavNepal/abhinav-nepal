@@ -14,9 +14,10 @@ class ScholarsController < ApplicationController
 
   def create
     @scholar = Scholar.new scholar_params
-    if @scholar.save
+    if verify_recaptcha(model: @scholar) && @scholar.save
       redirect_to scholars_path
     else
+      flash.now[:error] = @scholar.errors[:base].to_sentence
       render :new
     end
   end

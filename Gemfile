@@ -54,6 +54,9 @@ gem "simple_form"
 gem "cocoon"
 gem "country_select"
 
+# ReCaptcha helpers
+gem "recaptcha"
+
 # general ruby templating
 gem "rabl"
 
@@ -76,6 +79,9 @@ group :development, :test do
 
   # Generate sample test data
   gem "faker"
+
+  # load environment variables
+  gem "dotenv-rails"
 end
 
 group :development do

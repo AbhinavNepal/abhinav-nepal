@@ -1,4 +1,4 @@
 <%# whitelist flash keys to avoid erroneous flash messages. See: https://github.com/plataformatec/devise/issues/1777 %>
 <% {notice: "success", alert: "danger", error: "danger"}.each do |key, klass| %>
-  <%= simple_format flash[key], {class: "alert alert-#{klass} small"}, wrapper_tag: "div" if flash[key].present? %>
+  <%= simple_format flash[key], {class: "alert alert-#{klass}"}, wrapper_tag: "div" if flash[key].present? %>
 <% end %>
