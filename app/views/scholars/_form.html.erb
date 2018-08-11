@@ -31,7 +31,7 @@
       <%= of.input :name %>
       <div class="row">
         <div class="col-md-6">
-          <%= of.input :position, collection: ListItem.in_list(:org_positions), value_method: :label %>
+          <%= of.input :position, collection: ListItem.in_list(:org_positions).order(:label), value_method: :label %>
         </div>
         <div class="col-md-6">
           <%= of.input :country_code, include_blank: true %>
