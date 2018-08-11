@@ -11,4 +11,12 @@ class Discipline < ApplicationRecord
     title
   end
 
+  def root
+    if self_and_ancestors.loaded?
+      self_and_ancestors.find { |disc| disc.parent_id.nil? }
+    else
+      super
+    end
+  end
+
 end

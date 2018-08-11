@@ -1,1 +1,17 @@
-form { font-size: 14px; }
+form {
+  font-size: 14px;
+
+  .select2 { width: 100%!important; }
+
+  .typeahead.dropdown-menu {
+    width: 90%;
+    li { padding-right: 10px; }
+    a.dropdown-item {
+      overflow: hidden;
+      &.active {
+        background: #ededed;
+        &:active { color: inherit !important; }
+      }
+    }
+  }
+}

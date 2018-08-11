@@ -16,6 +16,12 @@
 p, .alert { font-size: 14px; }
 .card .card-body { padding: 0.75em; }
 
+.container-sm {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .site-footer {
   font-size: 12px;
   margin-top: 40px;
@@ -28,19 +34,3 @@ p, .alert { font-size: 14px; }
     &:hover { color: #171b1f }
   }
 }
-
-.typeahead.dropdown-menu {
-  width: 90%;
-  .active .dropdown-item {
-    background: #ededed;
-    &:active { color: inherit !important; }
-  }
-}
-
-.container-sm {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.select2 { width: 100%!important; }

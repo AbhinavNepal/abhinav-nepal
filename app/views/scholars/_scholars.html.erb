@@ -7,12 +7,10 @@
   </div>
 <% end %>
 
-<% @scholars.in_groups_of(3).each do |grouped_scholars| %>
-  <div class="row">
-    <% grouped_scholars.compact.each do |scholar| %>
-      <div class="col-md-4">
-        <%= render scholar %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+<div class="row">
+  <% @scholars.each do |scholar| %>
+    <div class="col-md-4">
+      <%= render scholar %>
+    </div>
+  <% end %>
+</div>
