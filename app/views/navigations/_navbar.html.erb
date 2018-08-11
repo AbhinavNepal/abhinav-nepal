@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
   <div class="container">
-    <%= link_to image_tag("an_logo.png", height: "32"), root_path, class: "mr-4" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+    <%= link_to image_tag("an_logo.png", height: "32"), root_path, class: "mr-4 pb-1" %>
+    <button class="navbar-toggler pb-1" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -9,6 +9,9 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item <%= nav_active "scholars" %>">
           <a class="nav-link" href="<%= root_path %>">Scholars</a>
+        </li>
+        <li class="nav-item <%= nav_active about_path %>">
+          <a class="nav-link" href="<%= about_path %>">About</a>
         </li>
       </ul>
 
