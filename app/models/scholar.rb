@@ -1,5 +1,7 @@
 class Scholar < ApplicationRecord
 
+  paginates_per 45
+
   belongs_to :discipline
   belongs_to :institute, optional: true
   has_one :organisation

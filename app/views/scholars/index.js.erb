@@ -1,1 +1,14 @@
-$("#scholar-results").html("<%= j render('scholars', scholars: @scholars) %>")
+var $container = $("#scholar-results .pagination-container");
+var $paginator = $("#scholar-results .paginator");
+
+<% if @searching && @scholars.first_page? %>
+  $container.html("<%= j render('scholars', scholars: @scholars) %>");
+<% else %>
+  $("<%= j render('scholars', scholars: @scholars) %>").appendTo($container);
+<% end %>
+
+<% if @scholars.last_page? %>
+  $paginator.html("");
+<% else %>
+  $paginator.html("<%= j render 'kaminari/load_next', scholars: @scholars %>");
+<% end %>

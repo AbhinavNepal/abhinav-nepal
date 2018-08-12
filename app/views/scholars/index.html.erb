@@ -8,8 +8,11 @@
   </p>
 </div>
 
-<%= render "search", q: @q %>
+<%= render "search" %>
 
 <div id="scholar-results">
-  <%= render "scholars", scholars: @scholars %>
+  <div class="pagination-container">
+    <%= render "scholars", scholars: @scholars %>
+  </div>
+  <%= render "kaminari/load_paginator", scholars: @scholars %>
 </div>
