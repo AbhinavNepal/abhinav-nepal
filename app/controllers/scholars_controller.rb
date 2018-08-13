@@ -4,7 +4,6 @@ class ScholarsController < ApplicationController
 
   def index
     set_search
-    @q = Scholar.ransack(params[:q])
     load_scholars
   end
 
@@ -34,20 +33,30 @@ class ScholarsController < ApplicationController
   end
 
   def set_search
-    if params[:sid]
+    if params[:sid].present?
       @scholar = Scholar.find(params[:sid])
       params[:q] = {name_or_description_cont: @scholar.name,
                     discipline_id_or_discipline_parent_id_eq: @scholar.discipline_id}
     end
+    @search = Scholar.ransack(params[:q])
     @searching = (params[:q] || {}).values.any?(&:present?)
   end
 
   def load_scholars
-    @scholars = @q.result
-                  .preload(:organisation,
-                           :web_urls,
-                           discipline: :self_and_ancestors)
-                  .order(updated_at: :desc)
+    @scholars = if request.format.json?
+                  @search.result.preload(:discipline)
+                else
+                  scholars_scope
+                end
+  end
+
+  def scholars_scope
+    @search.result
+           .preload(:organisation,
+                    :web_urls,
+                    discipline: :self_and_ancestors)
+           .order(updated_at: :desc)
+           .page(params[:page])
   end
 
 end

@@ -30,6 +30,8 @@ gem "enumerize"
 gem "closure_tree", github: 'ClosureTree/closure_tree', branch: "master"
 # Object-based searching
 gem "ransack"
+# scope & engine based paginator
+gem "kaminari"
 
 ## Assets ##
 # Use SCSS for stylesheets

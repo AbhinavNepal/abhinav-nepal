@@ -1,4 +1,4 @@
-<%= search_form_for q, url: search_scholars_path, method: :post, remote: true, builder: SimpleForm::FormBuilder do |f| %>
+<%= search_form_for @search, url: search_scholars_path, method: :post, remote: true, builder: SimpleForm::FormBuilder do |f| %>
   <div class="row">
     <div class="col-md-9">
       <%= f.input :name, wrapper: :vertical_input_group, label: false do %>

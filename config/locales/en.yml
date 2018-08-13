@@ -8,6 +8,11 @@ en:
 
   button:
     disable_with: "Submitting..."
+
+  pagination:
+    more: "Load more"
+    disable_with: "Loading more..."
+
   layouts:
     footer:
       about:

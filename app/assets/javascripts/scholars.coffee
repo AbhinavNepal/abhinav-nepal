@@ -1,9 +1,15 @@
 scholars = new Bloodhound(
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace("first_name")
   queryTokenizer: Bloodhound.tokenizers.whitespace
-  prefetch: {url: Routes.scholars_path({format: "json"})})
-scholars.clearPrefetchCache(); # debugging
+  prefetch: {url: Routes.scholars_path({format: "json"}), ttl: 21600000})
+  # NOTE: remote - not a performant approach. prefer prefetch.
+  # remote: {url: Routes.scholars_path({format: "json", q: {first_name_cont: 'QUERY'}}), wildcard: 'QUERY'}
+# NOTE: Prefetched data cached for `21600000` (6hrs). debug/clear with:
+# scholars.clearPrefetchCache();
 scholars.initialize()
+
+scholarOrgFields = ->
+  $("select[name*='scholar[organisation_attributes][position]'], select[name*='scholar[organisation_attributes][country_code]']")
 
 $(document).on "ready page:load remote:load turbolinks:load", ->
 
@@ -17,14 +23,14 @@ $(document).on "ready page:load remote:load turbolinks:load", ->
     $(@).on
       "cocoon:before-insert": (e, task_to_be_added) ->
         task_to_be_added.fadeIn 300
+      "cocoon:after-insert": (e, added_task) ->
+        added_task.find("select").select2
+          placeholder: ""
 
   $("select[name*='scholar[discipline_id]']").select2
     placeholder: ""
 
-  $("select[name*='scholar[organisation_attributes][position]']").select2
-    placeholder: ""
-
-  $("select[name*='scholar[organisation_attributes][country_code]']").select2
+  scholarOrgFields().select2
     placeholder: ""
 
   $("form#scholar_search").each ->
@@ -59,3 +65,8 @@ $(document).on "ready page:load remote:load turbolinks:load", ->
     afterSelect: (data) ->
       id = $("input#suggested_id").val()
       window.location.href = Routes.scholars_path({sid: id})
+
+document.addEventListener "turbolinks:before-cache", ->
+  # clear placeholder before caching
+  # https://github.com/ambethia/recaptcha/issues/217
+  $(".g-recaptcha").empty()
