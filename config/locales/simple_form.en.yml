@@ -14,3 +14,9 @@ en:
     labels:
       organisation:
         country_code: "Country"
+
+    hints:
+      scholar:
+        created_by:
+          email: "All scholars go through an approval process to make sure valid details are added.
+          Hence we require your email to get in touch in cases where we may require more info."

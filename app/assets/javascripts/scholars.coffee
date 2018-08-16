@@ -65,8 +65,3 @@ $(document).on "ready page:load remote:load turbolinks:load", ->
     afterSelect: (data) ->
       id = $("input#suggested_id").val()
       window.location.href = Routes.scholars_path({sid: id})
-
-document.addEventListener "turbolinks:before-cache", ->
-  # clear placeholder before caching
-  # https://github.com/ambethia/recaptcha/issues/217
-  $(".g-recaptcha").empty()

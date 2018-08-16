@@ -33,6 +33,9 @@ gem "ransack"
 # scope & engine based paginator
 gem "kaminari"
 
+## ActiveModel ##
+gem "statesman"
+
 ## Assets ##
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -50,6 +53,10 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # rails named routes as javascript helpers
 gem "js-routes"
+
+## Caching ##
+# Per-request global storage
+gem "request_store"
 
 ## Form generation ##
 gem "simple_form"

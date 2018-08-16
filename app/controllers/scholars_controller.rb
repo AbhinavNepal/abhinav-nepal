@@ -13,7 +13,7 @@ class ScholarsController < ApplicationController
 
   def create
     @scholar = Scholar.new scholar_params
-    if verify_recaptcha(model: @scholar) && @scholar.save
+    if recaptcha_valid? && @scholar.save
       redirect_to scholars_path
     else
       flash.now[:error] = @scholar.errors[:base].to_sentence
@@ -29,7 +29,8 @@ class ScholarsController < ApplicationController
                                     :description,
                                     :discipline_id,
                                     organisation_attributes: [:id, :name, :position, :country_code],
-                                    web_urls_attributes: [:id, :title, :url, :code, :_destroy])
+                                    web_urls_attributes: [:id, :title, :url, :code, :_destroy],
+                                    created_by_attributes: [:email])
   end
 
   def set_search
@@ -52,11 +53,22 @@ class ScholarsController < ApplicationController
 
   def scholars_scope
     @search.result
+           .approved
            .preload(:organisation,
                     :web_urls,
                     discipline: :self_and_ancestors)
            .order(updated_at: :desc)
            .page(params[:page])
+  end
+
+  def transition_to!(state)
+    ActiveRecord::Base.transaction do
+      @scholar.transition_to! state
+    end
+  end
+
+  def recaptcha_valid?
+    current_user.present? || verify_recaptcha(model: @scholar)
   end
 
 end

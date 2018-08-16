@@ -23,6 +23,8 @@ RSpec.feature "Scholar", type: :feature do
         fill_in "scholar[web_urls_attributes][0][url]", with: Faker::Internet.url
       end
 
+      fill_in "scholar[created_by_attributes][email]", with: Faker::Internet.email
+
       click_on("Save")
       expect(Scholar.count).to eq(1)
     end
