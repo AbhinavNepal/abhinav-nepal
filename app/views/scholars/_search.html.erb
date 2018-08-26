@@ -12,5 +12,6 @@
       <%= f.input :discipline_id_or_discipline_parent_id_eq, collection: search_discipline_options,
                                                              label: false %>
     </div>
+    <%= hidden_field_tag :tab, @tab %>
   </div>
 <% end %>

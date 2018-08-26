@@ -1,90 +1,132 @@
-<%= render partial: "layouts/flash" %>
+<%= simple_form_for setup_scholar(@scholar), html: {id: "scholar-form"} do |f| %>
+  <%= render partial: "layouts/flash" %>
 
-<div class="card mb-2">
-  <div class="card-header">
-    <%= fa_icon "user-circle-o", text: "Details" %>
-  </div>
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-6">
-        <%= f.input :first_name, autofocus: true %>
-      </div>
-      <div class="col-md-6">
-        <%= f.input :last_name %>
-      </div>
-      <%= hidden_field_tag :suggested_id %>
+  <div class="card mb-2">
+    <div class="card-header">
+      <%= fa_icon "user-circle-o", text: "Details" %>
     </div>
-    <%= f.association :discipline, collection: Discipline.roots,
-                                   as: :grouped_select,
-                                   group_method: :descendants,
-                                   group_label_method: :title %>
-    <%= f.input :description, label: "Description / keyword" %>
-  </div>
-</div>
-
-<div class="card mb-2">
-  <div class="card-header">
-    <%= fa_icon "university", text: "Organisation" %>
-  </div>
-  <div class="card-body">
-    <%= f.simple_fields_for :organisation do |of| %>
-      <%= of.input :name %>
+    <div class="card-body">
       <div class="row">
         <div class="col-md-6">
-          <%= of.input :position, collection: ListItem.in_list(:org_positions).order(:label), value_method: :label %>
+          <%= f.input :first_name, autofocus: true %>
         </div>
         <div class="col-md-6">
-          <%= of.input :country_code, include_blank: true %>
+          <%= f.input :last_name %>
+        </div>
+        <%= hidden_field_tag :suggested_id %>
+      </div>
+      <%= f.association :discipline, collection: Discipline.roots,
+                                     as: :grouped_select,
+                                     group_method: :descendants,
+                                     group_label_method: :title %>
+      <%= f.input :description, label: "Description / keyword" %>
+    </div>
+  </div>
+
+  <div class="card mb-2">
+    <div class="card-header">
+      <%= fa_icon "university", text: "Organisation" %>
+    </div>
+    <div class="card-body">
+      <%= f.simple_fields_for :organisation do |of| %>
+        <%= of.input :name %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= of.input :position, collection: ListItem.in_list(:org_positions).order(:label), value_method: :label %>
+          </div>
+          <div class="col-md-6">
+            <%= of.input :country_code, include_blank: true %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card mb-2">
+    <div class="card-header">
+      <%= fa_icon "link", text: "Publication links" %>
+      <abbr class="pull-right text-muted" data-toggle="tooltip" data-placement="top" title="At least one source needs to be supplied">
+        <%= fa_icon "info-circle" %>
+      </abbr>
+    </div>
+    <div class="card-body publication_web_urls">
+      <% f.object.web_urls.select(&:publication?).each do |web_url| %>
+        <%= f.simple_fields_for :web_urls, web_url do |wuf| %>
+          <%= render "web_url_fields", f: wuf %>
+        <% end %>
+      <% end %>
+      <div class="clearfix">
+        <%= link_to_add_association "Add more", f, :web_urls, class: "float-right", wrap_object: Proc.new { f.object.web_urls.select(&:publication?) } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <%= fa_icon "link", text: "Personal links" %>
+    </div>
+    <div class="card-body personal_web_urls">
+      <% f.object.web_urls.select(&:personal?).each do |web_url| %>
+        <%= f.simple_fields_for :web_urls, web_url do |wuf| %>
+          <%= render "web_url_fields", f: wuf %>
+        <% end %>
+      <% end %>
+      <div class="clearfix">
+        <%= link_to_add_association "Add more", f, :web_urls, class: "float-right", wrap_object: Proc.new { f.object.web_urls.select(&:personal?) } %>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <% unless current_user %>
+    <div class="card bg-light">
+      <div class="card-header">
+        <%= fa_icon "user-circle", text: "Your details" %>
+      </div>
+      <div class="card-body">
+        <%= f.simple_fields_for :created_by do |pf| %>
+          <%= pf.input :email %>
+        <% end %>
+        <div class="float-right">
+          <%= recaptcha_tags %>
         </div>
       </div>
-    <% end %>
-  </div>
-</div>
+    </div>
+  <% end %>
 
-<div class="card mb-2">
-  <div class="card-header">
-    <%= fa_icon "link", text: "Publication links" %>
-    <abbr class="pull-right text-muted" data-toggle="tooltip" data-placement="top" title="At least one source needs to be supplied">
-      <%= fa_icon "info-circle" %>
-    </abbr>
-  </div>
-  <div class="card-body publication_web_urls">
-    <% f.object.web_urls.select(&:publication?).each do |web_url| %>
-      <%= f.simple_fields_for :web_urls, web_url do |wuf| %>
-        <%= render "web_url_fields", f: wuf %>
-      <% end %>
-    <% end %>
-    <div class="clearfix">
-      <%= link_to_add_association "Add more", f, :web_urls, class: "float-right", wrap_object: Proc.new { f.object.web_urls.select(&:publication?) } %>
+  <% if current_user && f.object.persisted? %>
+    <div class="card bg-light">
+      <div class="card-header">
+        <%= fa_icon "user-circle", text: "Added details" %>
+      </div>
+      <div class="card-body">
+        <%= f.simple_fields_for :created_by do |pf| %>
+          <div class="row">
+            <div class="col-md-2">
+              <%= pf.label :email, required: false %>
+            </div>
+            <div class="col-md-10">
+              <%= pf.object.email %>
+            </div>
+          </div>
+        <% end %>
+        <div class="row">
+          <div class="col-md-2">
+            <%= f.label :created_at %>
+          </div>
+          <div class="col-md-10">
+            <%= f.object.created_at %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="clearfix mt-3">
+    <div class="float-right">
+      <%= f.button :submit, "Save", class: "btn btn-outline-success" %>
+      <%= link_to "Cancel", scholars_path, class: "btn btn-outline-danger" %>
     </div>
   </div>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    <%= fa_icon "link", text: "Personal links" %>
-  </div>
-  <div class="card-body personal_web_urls">
-    <% f.object.web_urls.select(&:personal?).each do |web_url| %>
-      <%= f.simple_fields_for :web_urls, web_url do |wuf| %>
-        <%= render "web_url_fields", f: wuf %>
-      <% end %>
-    <% end %>
-    <div class="clearfix">
-      <%= link_to_add_association "Add more", f, :web_urls, class: "float-right", wrap_object: Proc.new { f.object.web_urls.select(&:personal?) } %>
-    </div>
-  </div>
-</div>
-
-<div class="clearfix mt-3">
-  <div class="float-right">
-    <%= recaptcha_tags %>
-  </div>
-</div>
-
-<div class="clearfix mt-3">
-  <div class="float-right">
-    <%= f.button :submit, "Save", class: "btn btn-outline-success" %>
-    <%= link_to "Cancel", scholars_path, class: "btn btn-outline-danger" %>
-  </div>
-</div>
+<% end %>

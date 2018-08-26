@@ -2,8 +2,11 @@ class ScholarsController < ApplicationController
 
   skip_before_action :verify_authenticity_token, only: :index
 
+  before_action :load_scholar, only: [:edit, :update, :approve]
+
   def index
-    set_search
+    prepare_tab
+    prepare_search
     load_scholars
   end
 
@@ -13,7 +16,7 @@ class ScholarsController < ApplicationController
 
   def create
     @scholar = Scholar.new scholar_params
-    if verify_recaptcha(model: @scholar) && @scholar.save
+    if recaptcha_valid? && @scholar.save
       redirect_to scholars_path
     else
       flash.now[:error] = @scholar.errors[:base].to_sentence
@@ -21,7 +24,25 @@ class ScholarsController < ApplicationController
     end
   end
 
+  def update
+    @scholar.assign_attributes scholar_params
+    if @scholar.save
+      redirect_to scholars_path(tab: :in_review)
+    else
+      render :edit
+    end
+  end
+
+  def approve
+    transition_to!(:approved)
+    redirect_to scholars_path(tab: :in_review)
+  end
+
   private
+
+  def load_scholar
+    @scholar = Scholar.find params[:id]
+  end
 
   def scholar_params
     params.require(:scholar).permit(:first_name,
@@ -29,10 +50,19 @@ class ScholarsController < ApplicationController
                                     :description,
                                     :discipline_id,
                                     organisation_attributes: [:id, :name, :position, :country_code],
-                                    web_urls_attributes: [:id, :title, :url, :code, :_destroy])
+                                    web_urls_attributes: [:id, :title, :url, :code, :_destroy],
+                                    created_by_attributes: [:id, :email])
   end
 
-  def set_search
+  def prepare_tab(tab: :approved)
+    @tab = current_user ? current_tab(tab) : :approved
+  end
+
+  def current_tab(tab)
+    (ScholarStateMachine.states.find { |state| state == params[:tab] } || tab).to_sym
+  end
+
+  def prepare_search
     if params[:sid].present?
       @scholar = Scholar.find(params[:sid])
       params[:q] = {name_or_description_cont: @scholar.name,
@@ -52,11 +82,22 @@ class ScholarsController < ApplicationController
 
   def scholars_scope
     @search.result
+           .with_state(@tab)
            .preload(:organisation,
                     :web_urls,
                     discipline: :self_and_ancestors)
            .order(updated_at: :desc)
            .page(params[:page])
+  end
+
+  def transition_to!(state)
+    ActiveRecord::Base.transaction do
+      @scholar.transition_to! state
+    end
+  end
+
+  def recaptcha_valid?
+    current_user.present? || verify_recaptcha(model: @scholar)
   end
 
 end

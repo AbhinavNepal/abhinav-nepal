@@ -15,14 +15,14 @@ RSpec.feature "Scholar", type: :feature do
       expect(page).to have_link(href: new_scholar_path)
     end
 
-    it "renders list of scholars" do
-      scholar = create(:scholar)
+    it "renders list of approved scholars" do
+      approved_scholar = create(:scholar, :approved)
+      pending_scholar = create(:scholar, :in_review)
 
       visit scholars_path
       within(".scholars div#scholar-results") do
-        within("div.card") do
-          expect(page).to have_text scholar.name
-        end
+        expect(page).to have_text approved_scholar.name
+        expect(page).not_to have_text pending_scholar.name
       end
     end
   end

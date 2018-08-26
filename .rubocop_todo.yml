@@ -6,6 +6,13 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
+AllCops:
+  TargetRubyVersion: 2.3
+  DisplayCopNames: true
+  Exclude:
+  - 'db/schema.rb'
+  - 'vendor/**/*'
+
 Bundler/OrderedGems:
   Enabled: false
 
@@ -41,8 +48,7 @@ Layout/EmptyLines:
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: empty_lines, no_empty_lines
 Layout/EmptyLinesAroundBlockBody:
-  Exclude:
-    - db/schema.rb
+  Enabled: true
 
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
@@ -137,27 +143,26 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 20
 
-# Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
-  Exclude:
-    - 'test/test_helper.rb'
+  Enabled: true
 
 # Offense count: 27
 Style/Documentation:
   Enabled: false
 
-# Offense count: 3
+# Offense count: 2
 # Cop supports --auto-correct.
 Style/ExpandPathArguments:
   Exclude:
     - 'bin/rails'
     - 'bin/rake'
-    - 'test/test_helper.rb'
 
-# Offense count: 2
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, UseHashRocketsWithSymbolValues, PreferHashRocketsForNonAlnumEndingSymbols.
 # SupportedStyles: ruby19, hash_rockets, no_mixed_keys, ruby19_no_mixed_keys
@@ -179,14 +184,9 @@ Style/MixinUsage:
 # Configuration parameters: Strict.
 Style/NumericLiterals:
   MinDigits: 15
-  Exclude:
-    - db/schema.rb
 
-# Offense count: 1
-# Cop supports --auto-correct.
 Style/ParallelAssignment:
-  Exclude:
-    - 'config/initializers/simple_form.rb'
+  Enabled: false
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -214,7 +214,6 @@ Style/SymbolArray:
 Style/WordArray:
   Exclude:
     - db/migrate/**/*.rb
-    - db/schema.rb
 
 # Offense count: 107
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.

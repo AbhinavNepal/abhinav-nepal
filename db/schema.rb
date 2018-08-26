@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_231311) do
+ActiveRecord::Schema.define(version: 2018_08_19_113933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 2018_08_10_231311) do
     t.index ["scholar_id"], name: "index_organisations_on_scholar_id"
   end
 
+  create_table "people", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email", default: "", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_people_on_email", unique: true
+    t.index ["user_id"], name: "index_people_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -61,6 +72,21 @@ ActiveRecord::Schema.define(version: 2018_08_10_231311) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "scholar_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.json "metadata", default: {}
+    t.integer "sort_key", null: false
+    t.boolean "most_recent", null: false
+    t.bigint "scholar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "created_by_id"
+    t.index ["created_by_id"], name: "index_scholar_transitions_on_created_by_id"
+    t.index ["scholar_id", "most_recent"], name: "index_scholar_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["scholar_id", "sort_key"], name: "index_scholar_transitions_parent_sort", unique: true
+    t.index ["scholar_id"], name: "index_scholar_transitions_on_scholar_id"
+  end
+
   create_table "scholars", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -68,6 +94,9 @@ ActiveRecord::Schema.define(version: 2018_08_10_231311) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "discipline_id"
+    t.string "state"
+    t.bigint "created_by_id"
+    t.index ["created_by_id"], name: "index_scholars_on_created_by_id"
     t.index ["discipline_id"], name: "index_scholars_on_discipline_id"
   end
 
@@ -88,8 +117,10 @@ ActiveRecord::Schema.define(version: 2018_08_10_231311) do
     t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "person_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["person_id"], name: "index_users_on_person_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -112,5 +143,10 @@ ActiveRecord::Schema.define(version: 2018_08_10_231311) do
 
   add_foreign_key "list_items", "lists"
   add_foreign_key "organisations", "scholars"
+  add_foreign_key "people", "users"
+  add_foreign_key "scholar_transitions", "people", column: "created_by_id"
+  add_foreign_key "scholar_transitions", "scholars"
   add_foreign_key "scholars", "disciplines"
+  add_foreign_key "scholars", "people", column: "created_by_id"
+  add_foreign_key "users", "people"
 end

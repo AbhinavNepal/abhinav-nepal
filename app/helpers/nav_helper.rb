@@ -11,6 +11,10 @@ module NavHelper
     end
   end
 
+  def scholar_subnav_active(tab)
+    "active" if @tab == tab
+  end
+
   private
 
   def nav_path_active(link_name)
