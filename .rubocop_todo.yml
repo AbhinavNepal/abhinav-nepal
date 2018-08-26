@@ -143,30 +143,26 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 20
 
-# Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
-  Exclude:
-    - 'test/test_helper.rb'
+  Enabled: true
 
 # Offense count: 27
 Style/Documentation:
   Enabled: false
 
-# Offense count: 3
+# Offense count: 2
 # Cop supports --auto-correct.
 Style/ExpandPathArguments:
   Exclude:
     - 'bin/rails'
     - 'bin/rake'
-    - 'test/test_helper.rb'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, UseHashRocketsWithSymbolValues, PreferHashRocketsForNonAlnumEndingSymbols.
 # SupportedStyles: ruby19, hash_rockets, no_mixed_keys, ruby19_no_mixed_keys
@@ -189,11 +185,8 @@ Style/MixinUsage:
 Style/NumericLiterals:
   MinDigits: 15
 
-# Offense count: 1
-# Cop supports --auto-correct.
 Style/ParallelAssignment:
-  Exclude:
-    - 'config/initializers/simple_form.rb'
+  Enabled: false
 
 # Offense count: 2
 # Cop supports --auto-correct.

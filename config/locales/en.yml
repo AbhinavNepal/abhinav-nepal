@@ -28,6 +28,11 @@ en:
   scholars:
     index:
       description: "A curated list of Nepali scholars and scientists around the world in the field of science and technology."
+      nav:
+        approved: "Approved"
+        in_review_html: "Awaiting review <span class='badge badge-light'>%{count}</span>"
+      buttons:
+        add: "Add Scholar"
     scholars:
       result_count_html:
         one: "<strong>1</strong> match found"
@@ -35,3 +40,5 @@ en:
     new:
       title: "Add Scholar"
       warning_html: "<strong>Note:</strong> Having a PhD is neither a necessary nor a sufficient condition. The person must be active, contributing to the research community, and society by regularly publishing papers or scientific articles related to their work."
+    edit:
+      title: "Edit Scholar"

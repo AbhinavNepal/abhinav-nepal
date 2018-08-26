@@ -1,7 +1,7 @@
 <div class="mb-2">
   <h4>
     <%= Scholar.name.pluralize  %>
-    <%= link_to fa_icon("user-plus"), new_scholar_path, class: "btn btn-outline-primary float-right", title: "Add Scholar" %>
+    <%= link_to fa_icon("user-plus"), new_scholar_path, class: "btn btn-outline-primary float-right", title: t(".buttons.add") %>
   </h4>
   <p class="lead">
     <%= t ".description" %>
@@ -9,6 +9,19 @@
 </div>
 
 <%= render "search" %>
+
+<% if current_user %>
+  <ul class="nav nav-tabs my-3">
+    <li class="nav-item">
+      <%= link_to t(".nav.approved"), scholars_path, class: "nav-link #{scholar_subnav_active(:approved)}" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to scholars_path(tab: :in_review), class: "nav-link #{scholar_subnav_active(:in_review)}" do %>
+        <%= t(".nav.in_review_html", count: Scholar.in_review.count) %>
+      <% end %>
+    </li>
+  </ul>
+<% end %>
 
 <div id="scholar-results">
   <div class="pagination-container">

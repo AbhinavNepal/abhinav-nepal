@@ -26,7 +26,7 @@ class Scholar < ApplicationRecord
   has_many :web_urls, as: :linkable
   has_many :scholar_transitions, inverse_of: :scholar, dependent: :destroy
 
-  scope :approved, -> { with_state :approved }
+  scope :in_review, -> { with_state :in_review }
 
   accepts_nested_attributes_for :organisation, allow_destroy: true
   accepts_nested_attributes_for :web_urls, reject_if: :reject_web_urls?, allow_destroy: true
