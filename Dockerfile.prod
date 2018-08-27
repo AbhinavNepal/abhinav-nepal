@@ -17,4 +17,4 @@ ENV RAILS_ENV production
 # precompile Rails assets. We set a dummy secret key
 RUN rails SECRET_KEY_BASE=pickasecuretoken assets:precompile
 
-CMD script/start
+CMD bin/start-up

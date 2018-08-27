@@ -15,4 +15,4 @@ COPY Gemfile* ./
 RUN bundle install
 COPY . .
 
-CMD script/start
+CMD bin/start-up
