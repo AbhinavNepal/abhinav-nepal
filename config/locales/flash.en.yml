@@ -1,0 +1,5 @@
+en:
+  flash:
+    scholar:
+      create:
+        success: "Scholar has been successfully submitted and we will begin the review process shortly. Thank you for your contribution."

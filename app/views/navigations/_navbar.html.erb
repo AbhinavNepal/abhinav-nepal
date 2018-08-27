@@ -22,7 +22,6 @@
               <%= current_person.name %>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <%= link_to "Settings", "#", class: "dropdown-item small" %>
               <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item small", method: :delete %>
             </div>
           </li>

@@ -16,13 +16,13 @@
         <%= link_to web_url.title, web_url.url, target: "_blank" %>
       <% end %>
     </div>
-    <% if current_user %>
+    <% if policy(scholar).update? %>
       <div class="my-1 small">
         Added by: <%= scholar.created_by&.email %>
       </div>
       <div class="mt-1">
+        <%= link_to fa_icon("pencil"), edit_scholar_path(scholar), class: "btn btn-sm btn-outline-primary float-right", title: "Edit Scholar" %>
         <% if scholar.can_transition_to?(:approved) %>
-          <%= link_to fa_icon("pencil"), edit_scholar_path(scholar), class: "btn btn-sm btn-outline-primary float-right", title: "Edit Scholar" %>
           <%= link_to "Approve", approve_scholar_path(scholar), class: "btn btn-sm btn-outline-success", method: :patch, data: {disable_with: t("button.disable_with")} %>
         <% end %>
       </div>
