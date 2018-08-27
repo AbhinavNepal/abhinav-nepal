@@ -30,7 +30,7 @@ en:
       description: "A curated list of Nepali scholars and scientists around the world in the field of science and technology."
       nav:
         approved: "Approved"
-        in_review_html: "Awaiting review <span class='badge badge-light'>%{count}</span>"
+        in_review_html: "Awaiting review <span class='badge badge-secondary align-text-top'>%{count}</span>"
       buttons:
         add: "Add Scholar"
     scholars:

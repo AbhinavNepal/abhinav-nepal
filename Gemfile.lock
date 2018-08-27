@@ -187,6 +187,8 @@ GEM
       pry (>= 0.10.4)
     public_suffix (3.0.2)
     puma (3.11.4)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rabl (0.13.1)
       activesupport (>= 2.3.14)
     rack (2.0.5)
@@ -350,6 +352,7 @@ DEPENDENCIES
   pry
   pry-rails
   puma (~> 3.11)
+  pundit
   rabl
   rails (~> 5.2.0)
   ransack

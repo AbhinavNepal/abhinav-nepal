@@ -2,7 +2,7 @@ class ScholarsController < ApplicationController
 
   skip_before_action :verify_authenticity_token, only: :index
 
-  before_action :load_scholar, only: [:edit, :update, :approve]
+  before_action :load_and_authorize_scholar, only: [:edit, :update, :approve]
 
   def index
     prepare_tab
@@ -17,7 +17,7 @@ class ScholarsController < ApplicationController
   def create
     @scholar = Scholar.new scholar_params
     if recaptcha_valid? && @scholar.save
-      redirect_to scholars_path
+      redirect_to scholars_path, notice: t("flash.scholar.create.success")
     else
       flash.now[:error] = @scholar.errors[:base].to_sentence
       render :new
@@ -40,22 +40,17 @@ class ScholarsController < ApplicationController
 
   private
 
-  def load_scholar
+  def load_and_authorize_scholar
     @scholar = Scholar.find params[:id]
+    authorize @scholar
   end
 
   def scholar_params
-    params.require(:scholar).permit(:first_name,
-                                    :last_name,
-                                    :description,
-                                    :discipline_id,
-                                    organisation_attributes: [:id, :name, :position, :country_code],
-                                    web_urls_attributes: [:id, :title, :url, :code, :_destroy],
-                                    created_by_attributes: [:id, :email])
+    params.require(:scholar).permit policy(Scholar).permitted_attributes
   end
 
   def prepare_tab(tab: :approved)
-    @tab = current_user ? current_tab(tab) : :approved
+    @tab = policy(Scholar).update? ? current_tab(tab) : :approved
   end
 
   def current_tab(tab)
@@ -90,14 +85,14 @@ class ScholarsController < ApplicationController
            .page(params[:page])
   end
 
+  def recaptcha_valid?
+    policy(@scholar).update? || verify_recaptcha(model: @scholar)
+  end
+
   def transition_to!(state)
     ActiveRecord::Base.transaction do
       @scholar.transition_to! state
     end
-  end
-
-  def recaptcha_valid?
-    current_user.present? || verify_recaptcha(model: @scholar)
   end
 
 end

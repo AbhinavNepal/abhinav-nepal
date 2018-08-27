@@ -77,9 +77,8 @@
     </div>
   </div>
 
-  <hr />
-
-  <% unless current_user %>
+  <% unless policy(f.object).update? %>
+    <hr />
     <div class="card bg-light">
       <div class="card-header">
         <%= fa_icon "user-circle", text: "Your details" %>

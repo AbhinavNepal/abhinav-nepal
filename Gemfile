@@ -75,6 +75,9 @@ gem "devise"
 # role management library
 gem "rolify"
 
+# Minimal authorisation through OO design and pure Ruby classes
+gem "pundit"
+
 group :development, :test do
   # Debugging tools (pry, awesome print, etc.)
   gem "pry"
