@@ -80,6 +80,7 @@ class ScholarsController < ApplicationController
            .with_state(@tab)
            .preload(:organisation,
                     :web_urls,
+                    :created_by,
                     discipline: :self_and_ancestors)
            .order(updated_at: :desc)
            .page(params[:page])
