@@ -63,8 +63,11 @@ gem "simple_form"
 gem "cocoon"
 gem "country_select"
 
+## Validators ##
 # ReCaptcha helpers
 gem "recaptcha"
+# url validator
+gem "validate_url"
 
 # general ruby templating
 gem "rabl"
