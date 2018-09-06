@@ -86,6 +86,14 @@
       </div>
       <div class="card-body">
         <%= f.simple_fields_for :created_by do |pf| %>
+          <div class="row">
+            <div class="col-md-6">
+              <%= pf.input :first_name %>
+            </div>
+            <div class="col-md-6">
+              <%= pf.input :last_name %>
+            </div>
+          </div>
           <%= pf.input :email %>
         <% end %>
         <div class="float-right">
@@ -95,13 +103,23 @@
     </div>
   <% end %>
 
-  <% if current_user && f.object.persisted? %>
+  <% if policy(f.object).update? && f.object.persisted? %>
     <div class="card bg-light">
       <div class="card-header">
-        <%= fa_icon "user-circle", text: "Added details" %>
+        <%= fa_icon "user-circle", text: "Contributor details" %>
       </div>
       <div class="card-body">
         <%= f.simple_fields_for :created_by do |pf| %>
+          <% if (name = pf.object.name).present? %>
+            <div class="row">
+              <div class="col-md-2">
+                <%= pf.label :name %>
+              </div>
+              <div class="col-md-10">
+                <%= name %>
+              </div>
+            </div>
+          <% end %>
           <div class="row">
             <div class="col-md-2">
               <%= pf.label :email, required: false %>

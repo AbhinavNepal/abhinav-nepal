@@ -24,6 +24,14 @@ en:
       contact:
         link: "Contact"
 
+  activerecord:
+    errors:
+      models:
+        web_urls:
+          attributes:
+            url:
+              invalid: "is not a valid URL. Ensure http/https is included."
+
   # controllers
   scholars:
     index:
