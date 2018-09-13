@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="row">
-  <% scholars.each do |scholar| %>
+  <% scholars.shuffle.each do |scholar| %>
     <div class="col-md-4">
       <%= render scholar %>
     </div>
