@@ -64,7 +64,7 @@ class ScholarsController < ApplicationController
                     discipline_id_or_discipline_parent_id_eq: @scholar.discipline_id}
     end
     @search = Scholar.ransack(params[:q])
-    @searching = (params[:q] || {}).values.any?(&:present?)
+    @searching = (params[:q] || {}).keys.any?(&:present?)
   end
 
   def load_scholars
