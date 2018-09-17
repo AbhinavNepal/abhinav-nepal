@@ -12,7 +12,8 @@
     <div class="mb-1 text-muted small"><%= scholar.organisation %></div>
     <p class="mb-1 card-text"><%= scholar.description %></p>
     <div class="small">
-      <% scholar.web_urls.each do |web_url| %>
+      <% scholar.web_urls.each_with_index do |web_url, index| %>
+        <%= content_tag :span, nil, class: "dotDivider" if index.nonzero? %>
         <%= link_to web_url.title, web_url.url, target: "_blank" %>
       <% end %>
     </div>
