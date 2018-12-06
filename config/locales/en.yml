@@ -19,10 +19,17 @@ en:
         link: "About"
       donate:
         link: "Donate"
+      github:
+        link: "Github"
       privacy:
         link: "Privacy"
       contact:
         link: "Contact"
+    support_announcement:
+      title_html: "<span class='font-weight-bold'>Support</span> AbhinavNepal"
+      description_html: "AbhinavNepal is an open and growing crowdsourced platform that can used by anyone to find active Nepali scholars and scientists working all over the world in any academic fields. <br />
+      However we need your help to keep this going in a sustainable way without any advertisements and commercial interests. If everyone who finds this platform useful, helps to support it, it's future would be much more secure. Thank you."
+      support_btn: "Support Now"
 
   activerecord:
     errors:
@@ -35,7 +42,7 @@ en:
   # controllers
   scholars:
     index:
-      description: "A curated list of Nepali scholars and scientists around the world in the field of science and technology."
+      description: "A curated list of Nepali scholars and scientists around the world."
       nav:
         approved: "Approved"
         in_review_html: "Awaiting review <span class='badge badge-secondary align-text-top'>%{count}</span>"

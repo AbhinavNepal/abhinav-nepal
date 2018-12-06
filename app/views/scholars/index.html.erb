@@ -1,3 +1,5 @@
+<%= render partial: "layouts/support_announcement" %>
+
 <div class="mb-2">
   <h4>
     <%= Scholar.name.pluralize  %>
@@ -29,5 +31,5 @@
   <div class="pagination-container">
     <%= render "scholars", scholars: @scholars %>
   </div>
-  <%= render "kaminari/load_paginator", scholars: @scholars %>
+  <%= render "kaminari/load_paginator", items: @scholars %>
 </div>

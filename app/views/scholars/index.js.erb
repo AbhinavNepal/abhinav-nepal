@@ -10,5 +10,5 @@ var $paginator = $("#scholar-results .paginator");
 <% if @scholars.last_page? %>
   $paginator.html("");
 <% else %>
-  $paginator.html("<%= j render 'kaminari/load_next', scholars: @scholars %>");
+  $paginator.html("<%= j render 'kaminari/load_next', items: @scholars %>");
 <% end %>

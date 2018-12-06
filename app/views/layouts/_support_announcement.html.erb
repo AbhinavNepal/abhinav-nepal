@@ -1,0 +1,15 @@
+<%# TODO: create `announcement` model/structure for this %>
+<div class="jumbotron p-4 bg-secondary-light">
+  <h1 class="display-5 font-italic">
+    <%= t(".title_html") %>
+  </h1>
+  <p class="lead my-3">
+    <%= t(".description_html") %>
+  </p>
+  <div class="clearfix">
+    <%= link_to fa_icon("arrow-right", text: t(".support_btn"), right: true), "https://gofundme.com/nepali-scholars-open-database",
+                                                                              target: "_blank",
+                                                                              class: "btn btn-lg btn-warning float-right",
+                                                                              title: t(".support_btn") %>
+  </div>
+</div>
