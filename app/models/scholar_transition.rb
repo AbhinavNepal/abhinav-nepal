@@ -18,6 +18,7 @@ class ScholarTransition < ApplicationRecord
   def update_most_recent
     last_transition = scholar.scholar_transitions.order(:sort_key).last
     return unless last_transition.present?
+
     last_transition.update_column(:most_recent, true)
   end
 
