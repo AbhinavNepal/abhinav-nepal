@@ -8,7 +8,11 @@
     <h5 class="mb-1">
       <%= scholar.name %>
     </h5>
-    <div class="mb-1 small"><mark><%= discipline %></mark></div>
+    <div class="mb-1 small">
+      <mark>
+        <%= discipline %> <%= "(#{scholar.notes})" if scholar.notes.present? %>
+      </mark>
+    </div>
     <div class="mb-1 text-muted small"><%= scholar.organisation %></div>
     <p class="mb-1 card-text"><%= scholar.description %></p>
     <div class="small">

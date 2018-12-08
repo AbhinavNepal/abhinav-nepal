@@ -33,6 +33,7 @@ class Scholar < ApplicationRecord
   accepts_nested_attributes_for :created_by
 
   before_validation :set_created_by, on: :create
+  before_save :set_notes
 
   validates :first_name, :last_name, :discipline, presence: true
 
@@ -59,6 +60,12 @@ class Scholar < ApplicationRecord
 
   def set_created_by
     self.created_by = User.current&.person || Person.find_by(email: created_by&.email) || created_by
+  end
+
+  def set_notes
+    # notes is only applicable if a specific discipline
+    # has not been provided, i.e. is other
+    self.notes = nil unless discipline.other?
   end
 
 end

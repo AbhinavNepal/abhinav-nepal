@@ -27,8 +27,17 @@ $(document).on "ready page:load remote:load turbolinks:load", ->
         added_task.find("select").select2
           placeholder: ""
 
-  $("select[name*='scholar[discipline_id]']").select2
-    placeholder: ""
+  $("select[name*='scholar[discipline_id]']").each ->
+    $(@).select2
+      placeholder: ""
+
+    $(@).on "change", ->
+      txt = $(@).select2("data")[0].text
+      hide = txt != "Other"
+      $(".form-group.scholar_notes").toggleClass("d-none", hide)
+
+    # to cater form errors
+    $(@).trigger("change") if $(@).val()
 
   scholarOrgFields().select2
     placeholder: ""

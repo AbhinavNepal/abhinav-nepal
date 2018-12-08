@@ -13,6 +13,7 @@ class ScholarPolicy < ApplicationPolicy
   def permitted_attributes
     [:first_name,
      :last_name,
+     :notes,
      :description,
      :discipline_id,
      organisation_attributes: [:id, :name, :position, :country_code],

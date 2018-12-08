@@ -14,9 +14,18 @@ en:
     labels:
       organisation:
         country_code: "Country"
+      scholar:
+        notes: "Please suggest a best match if your discipline is not listed above"
 
     hints:
       scholar:
         created_by:
           email: "All scholars go through an approval process to make sure valid details are added.
           Hence we require your email to get in touch in cases where we may require more info."
+
+    info:
+      scholar:
+        discipline:
+          other: "If you cannot find your discipline, please select 'Other'"
+        web_url:
+          required: "At least one source needs to be supplied"

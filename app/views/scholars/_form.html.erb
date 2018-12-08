@@ -15,10 +15,16 @@
         </div>
         <%= hidden_field_tag :suggested_id %>
       </div>
+      <%= f.label :discipline, for: "scholar_discipline_id" %>
+      <abbr class="text-muted" data-toggle="tooltip" data-placement="top" title="<%= t("simple_form.info.scholar.discipline.other") %>">
+        <%= fa_icon "question-circle" %>
+      </abbr>
       <%= f.association :discipline, collection: Discipline.roots,
                                      as: :grouped_select,
                                      group_method: :descendants,
-                                     group_label_method: :title %>
+                                     group_label_method: :title,
+                                     label: false %>
+      <%= f.input :notes, wrapper_html: {class: "d-none"}, label_html: {class: "text-muted"} %>
       <%= f.input :description, label: "Description / keyword" %>
     </div>
   </div>
@@ -45,7 +51,7 @@
   <div class="card mb-2">
     <div class="card-header">
       <%= fa_icon "link", text: "Publication links" %>
-      <abbr class="pull-right text-muted" data-toggle="tooltip" data-placement="top" title="At least one source needs to be supplied">
+      <abbr class="pull-right text-muted" data-toggle="tooltip" data-placement="top" title="<%= t("simple_form.info.scholar.web_url.required") %>">
         <%= fa_icon "info-circle" %>
       </abbr>
     </div>

@@ -5,7 +5,11 @@ class Discipline < ApplicationRecord
   has_many :self_and_descendants, through: :descendant_hierarchies, source: :descendant
   has_many :self_and_ancestors, through: :ancestor_hierarchies, source: :ancestor
 
-  validates :title, :code, uniqueness: {case_sensitive: false}
+  validates :title, uniqueness: {scope: :code, case_sensitive: false}
+
+  def other?
+    code.match(/other_\w*/).present?
+  end
 
   def to_s
     title
