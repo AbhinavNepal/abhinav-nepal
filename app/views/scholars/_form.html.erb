@@ -115,29 +115,28 @@
         <%= fa_icon "user-circle", text: "Contributor details" %>
       </div>
       <div class="card-body">
-        <%= f.simple_fields_for :created_by do |pf| %>
-          <% if (name = pf.object.name).present? %>
-            <div class="row">
-              <div class="col-md-2">
-                <%= pf.label :name %>
-              </div>
-              <div class="col-md-10">
-                <%= name %>
-              </div>
-            </div>
-          <% end %>
+        <% creator = f.object.created_by %>
+        <% if (name = creator.name).present? %>
           <div class="row">
             <div class="col-md-2">
-              <%= pf.label :email, required: false %>
+              <strong><%= Person.human_attribute_name :name %></strong>
             </div>
             <div class="col-md-10">
-              <%= pf.object.email %>
+              <%= name %>
             </div>
           </div>
         <% end %>
+        <div class="row py-2">
+          <div class="col-md-2">
+            <strong><%= Person.human_attribute_name :email %></strong>
+          </div>
+          <div class="col-md-10">
+            <%= creator.email %>
+          </div>
+        </div>
         <div class="row">
           <div class="col-md-2">
-            <%= f.label :created_at %>
+            <strong><%= Scholar.human_attribute_name :created_at %></strong>
           </div>
           <div class="col-md-10">
             <%= f.object.created_at %>
