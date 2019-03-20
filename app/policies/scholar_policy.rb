@@ -18,7 +18,7 @@ class ScholarPolicy < ApplicationPolicy
      :discipline_id,
      organisation_attributes: [:id, :name, :position, :country_code],
      web_urls_attributes: [:id, :title, :url, :code, :_destroy],
-     created_by_attributes: [:id, :email, :first_name, :last_name]]
+     created_by_attributes: [:email, :first_name, :last_name]]
   end
 
 end
