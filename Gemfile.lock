@@ -182,7 +182,7 @@ GEM
       pry (>= 0.10.4)
     psych (3.1.0)
     public_suffix (3.0.3)
-    puma (3.12.1)
+    puma (3.12.2)
     pundit (2.0.1)
       activesupport (>= 3.0.0)
     rabl (0.14.0)
@@ -350,7 +350,7 @@ DEPENDENCIES
   poltergeist
   pry
   pry-rails
-  puma (~> 3.11)
+  puma (~> 3.12)
   pundit
   rabl
   rails (~> 5.2.2.1)
