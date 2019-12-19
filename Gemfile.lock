@@ -187,7 +187,7 @@ GEM
       activesupport (>= 3.0.0)
     rabl (0.14.0)
       activesupport (>= 2.3.14)
-    rack (2.0.7)
+    rack (2.0.8)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.2.1)
