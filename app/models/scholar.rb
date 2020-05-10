@@ -1,22 +1,11 @@
 class Scholar < ApplicationRecord
 
   extend Enumerize
-  include Statesman::Adapters::ActiveRecordQueries
   include NameFinder
-
-  class << self
-
-    def transition_class
-      ScholarTransition
-    end
-
-    private
-
-    def initial_state
-      :in_review
-    end
-
-  end
+  include Statesman::Adapters::ActiveRecordQueries[
+    transition_class: ScholarTransition,
+    initial_state: :in_review
+  ]
 
   paginates_per 45
 
