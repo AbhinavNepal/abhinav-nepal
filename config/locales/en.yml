@@ -25,11 +25,6 @@ en:
         link: "Privacy"
       contact:
         link: "Contact"
-    support_announcement:
-      title_html: "<span class='font-weight-bold'>Support</span> AbhinavNepal"
-      description_html: "AbhinavNepal is an open and growing crowdsourced platform that can used by anyone to find active Nepali scholars and scientists working all over the world in any academic fields. <br />
-      However we need your help to keep this going in a sustainable way without any advertisements and commercial interests. If everyone who finds this platform useful, helps to support it, it's future would be much more secure. Thank you."
-      support_btn: "Support Now"
 
   activerecord:
     errors:
