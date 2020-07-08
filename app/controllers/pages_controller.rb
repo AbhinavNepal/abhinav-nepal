@@ -12,7 +12,7 @@ class PagesController < ApplicationController
       uni["id"] = i + 1 # view logic: required for select purposes
       uni
     end
-    if name_q = params[:name]
+    if (name_q = params[:name]).present?
       unis = unis.select { |u| u["name"].downcase.include?(name_q) }
     end
     render json: unis
