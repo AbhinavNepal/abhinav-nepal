@@ -1,4 +1,4 @@
-FROM ruby:2.3.1
+FROM ruby:2.5.5
 
 # install system libraries
 RUN apt-get update -yqq \
