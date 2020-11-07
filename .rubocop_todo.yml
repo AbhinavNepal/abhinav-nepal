@@ -6,6 +6,10 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
+AllCops:
+  DisplayCopNames: true
+  NewCops: enable
+
 # Offense count: 3
 # Cop supports --auto-correct.
 # Configuration parameters: TreatCommentsAsGroupSeparators, Include.
@@ -67,6 +71,10 @@ Layout/SpaceInsideHashLiteralBraces:
 Lint/AssignmentInCondition:
   AllowSafeAssignment: true
 
+Lint/EmptyBlock:
+  Exclude:
+    - 'config/initializers/simple_form_bootstrap.rb'
+
 # Offense count: 1
 # Cop supports --auto-correct.
 Lint/NonDeterministicRequireOrder:
@@ -77,6 +85,8 @@ Lint/NonDeterministicRequireOrder:
 # Configuration parameters: IgnoredMethods.
 Metrics/AbcSize:
   Max: 19
+  Exclude:
+    - 'db/migrate/20180419213255_devise_create_users.rb'
 
 # Offense count: 2
 # Configuration parameters: CountComments, ExcludedMethods.
@@ -105,6 +115,9 @@ Style/ExpandPathArguments:
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: always, always_true, never
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/HashAsLastArrayItem:
   Enabled: false
 
 # Disable this cop and use -> { .. } and -> do .. end consistently
