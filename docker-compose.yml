@@ -13,6 +13,20 @@ services:
       - "5432:5432"
     env_file:
       - .env.local
+
+  redis:
+    image: redis:6.0-alpine
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - redis
+    env_file:
+      - .env.local
+
   app:
     build: .
     volumes:
@@ -21,5 +35,6 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - sidekiq
     env_file:
       - .env.local

@@ -17,6 +17,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+gem "redis-namespace"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -80,6 +82,9 @@ gem "rolify"
 
 # Minimal authorisation through OO design and pure Ruby classes
 gem "pundit"
+
+# Background processing
+gem "sidekiq"
 
 group :development, :test do
   # Debugging tools (pry, awesome print, etc.)
