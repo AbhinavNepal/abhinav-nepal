@@ -85,6 +85,8 @@ gem "pundit"
 
 # Background processing
 gem "sidekiq"
+# Job scheduler extension for sidekiq
+gem "sidekiq-scheduler"
 
 group :development, :test do
   # Debugging tools (pry, awesome print, etc.)
