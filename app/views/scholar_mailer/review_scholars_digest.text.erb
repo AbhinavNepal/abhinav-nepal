@@ -1,0 +1,12 @@
+Hi admin,
+
+Here is a list of scholars awaiting your review at <%= t("app.name") %>.
+
+<% @scholars.each do |scholar| %>
+<%= scholar.name %> (Added on <%= l(scholar.created_at.to_date, format: :dby) %>)
+<% end %>
+
+Please sign in to <%= t("app.name") %> to review them.
+
+Regards,
+AbhinavNepal Team

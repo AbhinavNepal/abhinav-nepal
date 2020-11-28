@@ -6,6 +6,12 @@ en:
     name: "AbhinavNepal"
     description: "Useful resources that can help anyone interested in doing science and innovation related works in or for Nepal."
 
+  date:
+    formats:
+      default: "%d/%m/%Y"      # [Ruby] default date format
+      wwy: "%a %d %b %Y"       # [Ruby] 'week with year' format
+      dby: "%d %b %Y"          # without abbreviated weekday name
+
   button:
     disable_with: "Submitting..."
 
@@ -52,3 +58,11 @@ en:
       warning_html: "<strong>Note:</strong> Having a PhD is neither a necessary nor a sufficient condition. The person must be active, contributing to the research community, and society by regularly publishing papers or scientific articles related to their work."
     edit:
       title: "Edit Scholar"
+
+  mailer:
+    from: "AbhinavNepal <no-reply@abhinavnepal.com>"
+    reply_to: "no-reply@abhinavnepal.com"
+
+  scholar_mailer:
+    review_scholars_digest:
+      subject: "Scholars awaiting your review"

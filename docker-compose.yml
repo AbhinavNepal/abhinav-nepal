@@ -27,6 +27,12 @@ services:
     env_file:
       - .env.local
 
+  mailcatcher:
+    image: yappabe/mailcatcher
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+
   app:
     build: .
     volumes:
@@ -36,5 +42,7 @@ services:
     depends_on:
       - db
       - sidekiq
+    links:
+      - mailcatcher
     env_file:
       - .env.local
