@@ -9,9 +9,5 @@
 <% end %>
 
 <div class="row">
-  <% scholars.shuffle.each do |scholar| %>
-    <div class="col-md-4">
-      <%= render scholar %>
-    </div>
-  <% end %>
+  <%= render scholars.shuffle %>
 </div>

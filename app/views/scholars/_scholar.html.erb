@@ -1,36 +1,38 @@
 <% discipline = scholar.discipline %>
 
-<div class="card flex-md-row mb-4 box-shadow h-md-250">
-  <div class="card-body d-flex flex-column">
-    <strong class="root_discipline d-inline-block mb-2 <%= discipline.root.code %>">
-      <%= discipline.root %>
-    </strong>
-    <h5 class="mb-1">
-      <%= scholar.name %>
-    </h5>
-    <div class="mb-1 small">
-      <mark>
-        <%= discipline %> <%= "(#{scholar.notes})" if scholar.notes.present? %>
-      </mark>
-    </div>
-    <div class="mb-1 text-muted small"><%= scholar.organisation %></div>
-    <p class="mb-1 card-text"><%= scholar.description %></p>
-    <div class="small">
-      <% scholar.web_urls.each_with_index do |web_url, index| %>
-        <%= content_tag :span, nil, class: "dotDivider" if index.nonzero? %>
-        <%= link_to web_url.title, web_url.url, target: "_blank" %>
-      <% end %>
-    </div>
-    <% if policy(scholar).update? %>
-      <div class="my-1 small">
-        Added by: <%= scholar.created_by&.email %>
+<div class="col-md-4">
+  <div class="card flex-md-row mb-4 box-shadow h-md-250">
+    <div class="card-body d-flex flex-column">
+      <strong class="root_discipline d-inline-block mb-2 <%= discipline.root.code %>">
+        <%= discipline.root %>
+      </strong>
+      <h5 class="mb-1">
+        <%= scholar.name %>
+      </h5>
+      <div class="mb-1 small">
+        <mark>
+          <%= discipline %> <%= "(#{scholar.notes})" if scholar.notes.present? %>
+        </mark>
       </div>
-      <div class="mt-1">
-        <%= link_to fa_icon("pencil"), edit_scholar_path(scholar), class: "btn btn-sm btn-outline-primary float-right", title: "Edit Scholar" %>
-        <% if scholar.can_transition_to?(:approved) %>
-          <%= link_to "Approve", approve_scholar_path(scholar), class: "btn btn-sm btn-outline-success", method: :patch, data: {disable_with: t("button.disable_with")} %>
+      <div class="mb-1 text-muted small"><%= scholar.organisation %></div>
+      <p class="mb-1 card-text"><%= scholar.description %></p>
+      <div class="small">
+        <% scholar.web_urls.each_with_index do |web_url, index| %>
+          <%= content_tag :span, nil, class: "dotDivider" if index.nonzero? %>
+          <%= link_to web_url.title, web_url.url, target: "_blank" %>
         <% end %>
       </div>
-    <% end %>
+      <% if policy(scholar).update? %>
+        <div class="my-1 small">
+          Added by: <%= scholar.created_by&.email %>
+        </div>
+        <div class="mt-1">
+          <%= link_to fa_icon("pencil"), edit_scholar_path(scholar), class: "btn btn-sm btn-outline-primary float-right", title: "Edit Scholar" %>
+          <% if scholar.can_transition_to?(:approved) %>
+            <%= link_to "Approve", approve_scholar_path(scholar), class: "btn btn-sm btn-outline-success", method: :patch, data: {disable_with: t("button.disable_with")} %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
