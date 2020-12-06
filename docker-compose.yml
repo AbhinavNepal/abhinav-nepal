@@ -3,6 +3,8 @@ version: "2"
 volumes:
   db-data:
     external: false
+  db-redis:
+    external: false
 
 services:
   db:
@@ -16,6 +18,8 @@ services:
 
   redis:
     image: redis:6.0-alpine
+    volumes:
+      - db-redis:/var/lib/redis/data
 
   sidekiq:
     build: .

@@ -9,4 +9,4 @@
 :schedule:
   ScholarDigestJob:
     description: "Send digest email to notify admins about scholars awaiting review"
-    cron: "0 7 * * 5" # every friday at 7am
+    cron: "0 7 * * 4" # every thursday at 7am
