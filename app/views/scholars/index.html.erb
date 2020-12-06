@@ -12,7 +12,7 @@
 
 <%= render "search" %>
 
-<% if current_user %>
+<% if policy(Scholar).update? %>
   <ul class="nav nav-tabs my-3">
     <li class="nav-item">
       <%= link_to t(".nav.approved"), scholars_path, class: "nav-link #{scholar_subnav_active(:approved)}" %>

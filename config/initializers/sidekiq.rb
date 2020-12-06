@@ -1,5 +1,5 @@
 shared_config = {
-  url: ENV['JOB_WORKER_URL'],
+  url: ENV["JOB_WORKER_URL"],
   namespace: "sidekiq:abhinavnepal:#{ENV['STAGE'] || 'dev'}"
 }
 

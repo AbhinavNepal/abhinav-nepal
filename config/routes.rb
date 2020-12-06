@@ -2,8 +2,6 @@ require "sidekiq/web"
 require "sidekiq-scheduler/web"
 
 Rails.application.routes.draw do
-  mount Sidekiq::Web => "/sidekiq"
-
   devise_for :users
   root "scholars#index"
 
@@ -15,4 +13,8 @@ Rails.application.routes.draw do
   # pages
   get "about" => "pages#about"
   get "privacy" => "pages#privacy"
+
+  authenticate :user, ->(u) { u.has_role? :admin } do
+    mount Sidekiq::Web => "/sidekiq"
+  end
 end
