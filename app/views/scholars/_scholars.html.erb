@@ -9,5 +9,6 @@
 <% end %>
 
 <div class="row">
-  <%= render scholars.shuffle %>
+  <%= render partial: "scholar", collection: scholars.shuffle,
+                                 locals: {current_user_is_admin: policy(Scholar).update?} %>
 </div>

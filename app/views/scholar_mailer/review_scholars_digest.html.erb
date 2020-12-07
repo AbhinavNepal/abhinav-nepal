@@ -1,0 +1,16 @@
+<p>Hi admin,</p>
+
+<p>Here is a list of scholars awaiting your review at <%= link_to t("app.name"), "https://abhinavnepal.com" %>.</p>
+
+<ul>
+  <% @scholars.each do |scholar| %>
+    <li><%= scholar.name %> (Added on <%= l(scholar.created_at.to_date, format: :dby) %>)</li>
+  <% end %>
+</ul>
+
+<p>Please <%= link_to "sign in", "https://abhinavnepal.com/users/sign_in" %> to <%= t("app.name") %> to review them.</p>
+
+<p>
+  Regards, <br />
+  AbhinavNepal Team
+</p>

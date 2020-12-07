@@ -22,7 +22,7 @@
           <%= link_to web_url.title, web_url.url, target: "_blank" %>
         <% end %>
       </div>
-      <% if policy(scholar).update? %>
+      <% if current_user_is_admin %>
         <div class="my-1 small">
           Added by: <%= scholar.created_by&.email %>
         </div>

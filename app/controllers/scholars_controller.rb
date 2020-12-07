@@ -81,6 +81,7 @@ class ScholarsController < ApplicationController
            .preload(:organisation,
                     :web_urls,
                     :created_by,
+                    :scholar_transitions,
                     discipline: :self_and_ancestors)
            .order(updated_at: :desc)
            .page(params[:page])
