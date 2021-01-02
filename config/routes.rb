@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "scholars#index"
 
-  resources :scholars, only: [:index, :new, :create, :edit, :update] do
+  resources :scholars, only: [:index, :new, :create, :show, :edit, :update] do
     collection { post :search, to: "scholars#index" }
     patch :approve, on: :member
   end

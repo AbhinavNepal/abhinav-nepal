@@ -17,4 +17,6 @@
 
 #= require select2.min
 
+#= require clipboard.min
+
 #= require_tree .

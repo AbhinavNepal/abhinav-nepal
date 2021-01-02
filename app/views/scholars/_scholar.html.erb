@@ -15,14 +15,12 @@
         </mark>
       </div>
       <div class="mb-1 text-muted small"><%= scholar.organisation %></div>
-      <p class="mb-1 card-text"><%= scholar.description %></p>
-      <div class="small">
-        <% scholar.web_urls.each_with_index do |web_url, index| %>
-          <%= content_tag :span, nil, class: "dotDivider" if index.nonzero? %>
-          <%= link_to web_url.title, web_url.url, target: "_blank" %>
-        <% end %>
+      <div class="small mt-2">
+        <%= link_to "View more", scholar_path(scholar), remote: true, class: "card-link" %>
       </div>
+
       <% if current_user_is_admin %>
+        <div class="border-top my-2"></div>
         <div class="my-1 small">
           Added by: <%= scholar.created_by&.email %>
         </div>

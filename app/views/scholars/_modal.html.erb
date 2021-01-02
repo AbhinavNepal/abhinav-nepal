@@ -1,0 +1,66 @@
+<% discipline = scholar.discipline %>
+
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">
+        <%= scholar.name %>
+      </h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h6>Discipline</h6>
+      <p>
+        <span><%= discipline.root %></span><br />
+        <%= fa_icon "long-arrow-right", text: discipline %> <%= "(#{scholar.notes})" if scholar.notes.present? %>
+      </p>
+
+      <hr />
+
+      <h6>Organisation</h6>
+      <p><%= scholar.organisation %></p>
+
+      <hr />
+
+      <h6>Description / keyword</h6>
+      <p><%= scholar.description %></p>
+
+      <hr />
+
+      <div class="small">
+        <h6>Links</h6>
+        <dl>
+          <% scholar.web_urls.each do |web_url| %>
+            <dd><%= link_to web_url.title, web_url.url, target: "_blank" %></dd>
+          <% end %>
+        </dl>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <small class="mr-auto text-muted">
+        <%= link_to "#", class: "font-weight-bold card-link", rel: "popover", tabindex: -1, data: {placement: "bottom", content_target: "#scholar-popover", container: "body"} do %>
+          <%= fa_icon "share", text: "Share" %>
+        <% end %>
+      </small>
+      <small class="text-muted font-italic">Last updated on <%= l scholar.updated_at.to_date, format: :dby %></small>
+    </div>
+  </div>
+</div>
+
+<div id="scholar-popover" class="d-none">
+  <div id="PopoverContent" class="p-2 clearfix">
+    <div class="py-2">
+      <kbd class="p-2"><%= scholar_url(scholar) %></kbd>
+    </div>
+    <div class="my-2">
+      <span class="d-inline-block float-right" tabindex="0" data-toggle="tooltip" data-placement="bottom">
+        <%= button_tag class: "btn btn-sm btn-outline-primary", data: {clipboard_text: scholar_url(scholar), clipboard_title: t("button.clipboard.copied")} do %>
+          <%= fa_icon "clipboard", text: "Copy" %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</div>

@@ -31,6 +31,10 @@ p, .alert { font-size: 14px; }
   &:after { content: '\00B7'; }
 }
 
+.popover {
+  max-width: 500px !important;
+}
+
 .site-footer {
   font-size: 12px;
   margin-top: 40px;

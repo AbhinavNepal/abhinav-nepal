@@ -11,7 +11,7 @@ scholars.initialize()
 scholarOrgFields = ->
   $("select[name*='scholar[organisation_attributes][position]'], select[name*='scholar[organisation_attributes][country_code]']")
 
-$(document).on "ready page:load remote:load turbolinks:load", ->
+$(document).on "turbolinks:load", ->
 
   $(".publication_web_urls, .personal_web_urls").each ->
     field1 = $(@).find(".web_url")[0]

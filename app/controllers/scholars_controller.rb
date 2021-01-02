@@ -14,6 +14,10 @@ class ScholarsController < ApplicationController
     @scholar = Scholar.new
   end
 
+  def show
+    @scholar = Scholar.find params[:id]
+  end
+
   def create
     @scholar = Scholar.new scholar_params
     if recaptcha_valid? && @scholar.save

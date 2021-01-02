@@ -20,9 +20,14 @@
 
   <body class="<%= controller_name %>">
     <%= render "navigations/navbar" %>
+
     <div class="container">
       <%= yield %>
     </div>
+
+    <%# generic modal for remote content %>
+    <div id="modal" class="modal fade" tabindex="-1" role="dialog"></div>
+
     <%= render "layouts/footer" %>
   </body>
 </html>
