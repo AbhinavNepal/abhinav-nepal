@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 6.1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
