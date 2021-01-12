@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/ClosureTree/closure_tree.git
-  revision: 07f4dfdac48765a60a786a5dfedaffb1d1e242be
+  revision: 22bbbf191c9c964fe45c7c361e4ee812e586f2af
   branch: master
   specs:
     closure_tree (7.2.0)
