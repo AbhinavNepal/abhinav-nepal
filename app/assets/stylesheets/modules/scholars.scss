@@ -10,8 +10,12 @@
     }
   }
 
-  .card {
-    .root_discipline { font-size: 14px; }
-    a:not(.btn) { font-weight: 500; }
+  #scholar-results {
+    .card {
+      .root_discipline { font-size: 14px; }
+      a:not(.btn) { font-weight: 500; }
+    }
   }
+
+  .scholar-show-card { width: 75%; }
 }

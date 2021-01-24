@@ -1,0 +1,43 @@
+<% discipline = scholar.discipline %>
+
+<h4 class="pb-2"><%= scholar.name %></h4>
+<% unless discipline.other? %>
+  <h6 class="root_discipline <%= discipline.root.code %>">
+    <%= discipline.root %>
+  </h6>
+<% end %>
+<mark><%= discipline %> <%= "(#{scholar.notes})" if scholar.notes.present? %></mark>
+
+<hr />
+
+<h6>Organisation</h6>
+<p><%= scholar.organisation %></p>
+
+<hr />
+
+<h6>Description / keyword</h6>
+<p><%= scholar.description %></p>
+
+<hr />
+
+<div class="small">
+  <h6>Links</h6>
+  <dl>
+    <% scholar.web_urls.each do |web_url| %>
+      <dd><%= link_to web_url.title, web_url.url, target: "_blank" %></dd>
+    <% end %>
+  </dl>
+</div>
+
+<hr />
+
+<div class="pb-3">
+  <small class="text-muted">
+    <%= link_to "#", class: "font-weight-bold card-link", rel: "popover", tabindex: -1, data: {placement: "bottom", content_target: "#scholar-popover", container: "body"} do %>
+      <%= fa_icon "share", text: "Share" %>
+    <% end %>
+  </small>
+  <small class="text-muted font-italic float-right">Last updated on <%= l scholar.updated_at.to_date, format: :dby %></small>
+</div>
+
+<%= render "popover", scholar: scholar %>

@@ -1,0 +1,14 @@
+<div id="scholar-popover" class="d-none">
+  <div id="PopoverContent" class="p-2 clearfix">
+    <div class="py-2">
+      <kbd class="p-2"><%= scholar_url(scholar) %></kbd>
+    </div>
+    <div class="my-2">
+      <span class="d-inline-block float-right" tabindex="0" data-toggle="tooltip" data-placement="bottom">
+        <%= button_tag class: "btn btn-sm btn-outline-primary", data: {clipboard_text: scholar_url(scholar), clipboard_title: t("button.clipboard.copied")} do %>
+          <%= fa_icon "clipboard", text: "Copy" %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</div>
