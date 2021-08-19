@@ -115,7 +115,7 @@ GEM
       railties (>= 5.0.0)
     faker (2.15.1)
       i18n (>= 1.6, < 2)
-    ffi (1.14.2)
+    ffi (1.15.3)
     font-awesome-rails (4.7.0.6)
       railties (>= 3.2, < 6.2)
     fugit (1.4.1)
@@ -149,7 +149,7 @@ GEM
     kaminari-core (1.2.1)
     launchy (2.5.0)
       addressable (~> 2.7)
-    listen (3.4.0)
+    listen (3.7.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.8.0)
@@ -160,7 +160,9 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.3)
@@ -225,7 +227,7 @@ GEM
       activerecord (>= 5.2.4)
       activesupport (>= 5.2.4)
       i18n
-    rb-fsevent (0.10.4)
+    rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     recaptcha (5.6.0)
@@ -369,7 +371,7 @@ DEPENDENCIES
   js-routes
   kaminari
   launchy
-  listen (>= 3.0.5, < 3.5)
+  listen (>= 3.0.5, < 3.8)
   pg
   poltergeist
   pry
